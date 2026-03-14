@@ -1,15 +1,21 @@
 import {
+  Body,
   Controller,
   Delete,
   Get,
   Logger,
-  NotFoundException,
+  Param,
+  Patch,
   Post,
+  Query,
+  UseFilters,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { ConfigService } from '@nestjs/config';
-import { User } from './user.entity';
+import { getUsersDTO } from './types/dto';
+import { TypeormFilter } from 'src/filters/typeorm/typeorm.filter';
 
+@UseFilters(TypeormFilter) // 在控制器上使用过滤器，捕获该控制器内的异常
 @Controller('user')
 export class UserController {
   // 手动打印日志
@@ -22,48 +28,35 @@ export class UserController {
     this.logger.log('UserController init');
   }
 
+  // 获取用户信息
   @Get()
-  getUsers(): any {
-    // 过滤器
-    const isAdmin = false;
-    if (!isAdmin) {
-      throw new NotFoundException('该用户不存在');
-      // throw new HttpException(
-      //   '该用户不是admin，无法查询',
-      //   HttpStatus.FORBIDDEN,
-      // );
-    }
-
+  getUsers(@Query() query: getUsersDTO): any {
     this.logger.log('请求getUsers成功！'); // 手动打印日志
-
-    return this.userService.findAll();
+    return this.userService.findUsers(query);
   }
-
-  @Get('user')
-  getUer(): any {
-    return this.userService.findOne(2);
+  // 获取用户信息
+  @Get('/profile')
+  getProfile(@Query('id') id: number): any {
+    console.log(id);
+    return this.userService.findProfile(id);
   }
-
   // 新增用户
   @Post()
-  addUser(): any {
-    const user = { username: 'wang_wu', password: '123456abc' } as User;
-    return this.userService.create(user);
+  addUser(@Body() dto: any): any {
+    this.logger.log(dto);
+    return this.userService.create(dto);
   }
 
   // 更新用户
-  @Post('update')
-  updateUser(): any {
-    return this.userService.update(3, { username: 'li_sisi001' });
+  @Patch('/:id')
+  updateUser(@Param('id') id: number, @Body() dto: any): any {
+    console.log(id, dto);
+
+    return this.userService.update(id, dto);
   }
 
-  @Delete('update')
-  remove(): any {
-    return this.userService.remove(1);
-  }
-
-  @Get('profile')
-  getProfile(): any {
-    return this.userService.findProfile(2);
+  @Delete('/:id')
+  remove(@Param('id') id: number): any {
+    return this.userService.remove(id);
   }
 }

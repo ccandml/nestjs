@@ -1,12 +1,16 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from './user/user.module';
 import { RangeModule } from './range/range.module';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as Joi from 'joi';
 import { RolesModule } from './roles/roles.module';
 import { LogsModule } from './logs/logs.module';
-import ormconfig from 'ormconfig';
+import { User } from './user/user.entity';
+import { Profile } from './user/profile.entity';
+import { Logs } from './logs/logs.entity';
+import { Roles } from './roles/roles.entity';
+import { ConfigEnum } from './enum/config.enum';
 
 const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
 
@@ -26,8 +30,22 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
         DB_SYNCHRONIZE: Joi.boolean().default(true),
       }),
     }),
-    // 连接数据库的装修队
-    TypeOrmModule.forRoot(ormconfig),
+    // 异步配置TypeORM（动态读取环境变量）
+    TypeOrmModule.forRootAsync({
+      // 声明依赖：工厂函数需要ConfigService
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        type: 'mysql',
+        host: configService.get(ConfigEnum.DB_HOST),
+        port: configService.get(ConfigEnum.DB_PORT),
+        username: configService.get(ConfigEnum.DB_USERNAME),
+        password: configService.get(ConfigEnum.DB_PASSWORD),
+        database: configService.get(ConfigEnum.DB_DATABASE),
+        entities: [User, Profile, Logs, Roles],
+        synchronize: true,
+        logging: true,
+      }),
+    }),
     UserModule,
     RangeModule,
     RolesModule,

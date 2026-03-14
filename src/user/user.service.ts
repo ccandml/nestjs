@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './user.entity';
 import { Repository } from 'typeorm';
+import { getUsersDTO } from './types/dto';
 
 @Injectable()
 export class UserService {
@@ -10,33 +11,36 @@ export class UserService {
     private userRepository: Repository<User>,
   ) {}
 
-  findAll() {
-    // return this.userRepository.find();
-    const queryBuilder = this.userRepository.createQueryBuilder('u');
-    return queryBuilder.getMany();
-  }
-
-  findOne(id: number) {
-    // return this.userRepository.findOne({ where: { id } });
-    return this.userRepository
-      .createQueryBuilder('u')
-      .where('u.id = :id', { id })
-      .getOne();
+  // 获取用户信息
+  findUsers(dto: getUsersDTO) {
+    const { id, username, page = 1, pageSize = 10 } = dto;
+    return this.userRepository.find({
+      select: {
+        id: true,
+        username: true,
+        profile: true,
+        logs: true,
+        roles: true,
+      },
+      where: {
+        id,
+        username,
+      },
+      relations: ['profile', 'logs', 'roles'],
+      order: {
+        id: 'ASC',
+      },
+      take: pageSize,
+      skip: (page - 1) * pageSize,
+    });
   }
 
   // 新增用户
   async create(user: User) {
-    // const userTemp = this.userRepository.create(user); // 创建对象，并且自动补充没有的字段
-    // const saveUser = await this.userRepository.save(userTemp); // 操作数据库，插入or更新 数据
-    // return saveUser;
-
     const userTemp = this.userRepository.create(user); // 创建对象，并且自动补充没有的字段
-    return this.userRepository
-      .createQueryBuilder('u')
-      .insert()
-      .into(User)
-      .values(userTemp)
-      .execute();
+
+    const saveUser = await this.userRepository.save(userTemp); // 操作数据库，插入or更新 数据
+    return saveUser;
   }
 
   // 更新用户
