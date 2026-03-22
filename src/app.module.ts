@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from './user/user.module';
-import { RangeModule } from './range/range.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as Joi from 'joi';
@@ -11,6 +10,27 @@ import { Profile } from './user/profile.entity';
 import { Logs } from './logs/logs.entity';
 import { Roles } from './roles/roles.entity';
 import { ConfigEnum } from './enum/config.enum';
+import { AuthModule } from './auth/auth.module';
+import { MenuModule } from './menu/menu.module';
+import { Menus } from './menu/entities/menu.entity';
+import { CategoriesModule } from './categories/categories.module';
+import { ProductsModule } from './products/products.module';
+import { Category } from './categories/entities/category.entity';
+import { Product } from './products/entities/product.entity';
+import { ProductSpec } from './products/entities/product-specs.entity';
+import { ProductSpecValue } from './products/entities/product-spec-values.entity';
+import { ProductSku } from './products/entities/product-skus.entity';
+import { ProductSkuSpec } from './products/entities/product-sku-specs.entity';
+import { ProductMainImage } from './products/entities/product-main-images.entity';
+import { ProductDetailProperty } from './products/entities/product-detail-properties.entity';
+import { ProductDetailImage } from './products/entities/product-detail-images.entity';
+import { CartItemModule } from './cart-item/cart-item.module';
+import { CartItem } from './cart-item/entities/cart-item.entity';
+import { UserAddressModule } from './user-address/user-address.module';
+import { UserAddress } from './user-address/entities/user-address.entity';
+import { OrderModule } from './order/order.module';
+import { Order } from './order/entities/order.entity';
+import { OrderItem } from './order/entities/order-item.entity';
 
 const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
 
@@ -41,15 +61,40 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
         username: configService.get(ConfigEnum.DB_USERNAME),
         password: configService.get(ConfigEnum.DB_PASSWORD),
         database: configService.get(ConfigEnum.DB_DATABASE),
-        entities: [User, Profile, Logs, Roles],
+        entities: [
+          User,
+          Profile,
+          Logs,
+          Roles,
+          Menus,
+          Category,
+          Product,
+          ProductSpec,
+          ProductSpecValue,
+          ProductSku,
+          ProductSkuSpec,
+          ProductMainImage,
+          ProductDetailProperty,
+          ProductDetailImage,
+          CartItem,
+          UserAddress,
+          Order,
+          OrderItem,
+        ],
         synchronize: true,
-        logging: true,
+        logging: true, // 打印SQL日志
       }),
     }),
     UserModule,
-    RangeModule,
     RolesModule,
     LogsModule,
+    AuthModule,
+    MenuModule,
+    CategoriesModule,
+    ProductsModule,
+    CartItemModule,
+    UserAddressModule,
+    OrderModule,
   ],
   controllers: [],
   providers: [],
