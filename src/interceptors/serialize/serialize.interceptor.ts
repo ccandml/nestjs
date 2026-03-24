@@ -12,12 +12,12 @@ export class SerializeInterceptor implements NestInterceptor {
     console.log('响应前拦截器');
 
     return next.handle().pipe(
-      map((data) => {
+      map((result) => {
         console.log('响应后拦截器，给前端之前');
 
         return {
           code: 200,
-          data,
+          result,
           message: '请求成功！',
         };
       }),

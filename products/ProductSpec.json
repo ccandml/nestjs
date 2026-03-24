@@ -1,0 +1,3082 @@
+[
+  {
+    "id": "1482375436640059394",
+    "productId": "1096001",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378134097625090",
+    "productId": "3464062",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369128088076290",
+    "productId": "3986121",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370221987725315",
+    "productId": "1135059",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378134097625090",
+    "productId": "3394027",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378229534818306",
+    "productId": "3844032",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369970333679619",
+    "productId": "1189004",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372728260526083",
+    "productId": "4026198",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372729053249538",
+    "productId": "4026198",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369432363859971",
+    "productId": "3998106",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370508320276481",
+    "productId": "1293000",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369432363859971",
+    "productId": "3463003",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370734946910211",
+    "productId": "1135081",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377063560249347",
+    "productId": "1091003",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370734946910211",
+    "productId": "1135079",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370734946910211",
+    "productId": "1135076",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370734946910211",
+    "productId": "1270008",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369695296389122",
+    "productId": "1666009",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368871023378435",
+    "productId": "1477017",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370221987725315",
+    "productId": "1548007",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370508320276481",
+    "productId": "3452050",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370508320276481",
+    "productId": "1398011",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371007673139203",
+    "productId": "4013563",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369970333679619",
+    "productId": "1189007",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369970333679619",
+    "productId": "1189006",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376673196376065",
+    "productId": "1601000",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370508320276481",
+    "productId": "3464033",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369970333679619",
+    "productId": "1188006",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375436640059394",
+    "productId": "1108007",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369128088076290",
+    "productId": "3997602",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378718200594434",
+    "productId": "1223002",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378806553608194",
+    "productId": "1223002",
+    "specName": "长度",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379814331613187",
+    "productId": "4014017",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375731298304002",
+    "productId": "1113002",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370221987725315",
+    "productId": "1082001",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375436640059394",
+    "productId": "1494003",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376026497613828",
+    "productId": "3465081",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373756678701058",
+    "productId": "3994870",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373757274292225",
+    "productId": "3994870",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380223636963329",
+    "productId": "3991977",
+    "specName": "款式",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379055204532225",
+    "productId": "1553040",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375258336002050",
+    "productId": "1486018",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371882000973827",
+    "productId": "3986514",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371882135191554",
+    "productId": "3986514",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371294005690372",
+    "productId": "1673035",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371294198628353",
+    "productId": "1673035",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378621249257473",
+    "productId": "4034793",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373090262515715",
+    "productId": "1135047",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373090660974594",
+    "productId": "1135047",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371882000973827",
+    "productId": "3995021",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371882135191554",
+    "productId": "3995021",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371882000973827",
+    "productId": "3997933",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371882135191554",
+    "productId": "3997933",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373756678701058",
+    "productId": "4004565",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373757274292225",
+    "productId": "4004565",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373425097998338",
+    "productId": "3828090",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373425295130625",
+    "productId": "3828090",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374386612830210",
+    "productId": "4023745",
+    "specName": "花色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374127195127810",
+    "productId": "4023745",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482381132123209729",
+    "productId": "3994931",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371567507865602",
+    "productId": "3991784",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371567902130177",
+    "productId": "3991784",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379814331613187",
+    "productId": "3990189",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375131252785154",
+    "productId": "1068005",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372209060216834",
+    "productId": "4000914",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372209735499778",
+    "productId": "4000914",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375731298304002",
+    "productId": "1513021",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369432363859971",
+    "productId": "3398028",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371882000973827",
+    "productId": "3996616",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371882135191554",
+    "productId": "3996616",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371567507865602",
+    "productId": "3827017",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371567902130177",
+    "productId": "3827017",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371567507865602",
+    "productId": "3986520",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371719970816001",
+    "productId": "3986520",
+    "specName": "尺寸",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375258336002050",
+    "productId": "1435017",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373756678701058",
+    "productId": "4001239",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373757274292225",
+    "productId": "4001239",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378229534818306",
+    "productId": "1569014",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375258336002050",
+    "productId": "1487013",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375258336002050",
+    "productId": "1389000",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378134097625090",
+    "productId": "3487028",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374126800863233",
+    "productId": "4007970",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374127195127810",
+    "productId": "4007970",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372554423402498",
+    "productId": "1555000",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372728260526083",
+    "productId": "4007887",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372729053249538",
+    "productId": "4007887",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482381185248264194",
+    "productId": "3520212",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482381267121078274",
+    "productId": "3520212",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371567507865602",
+    "productId": "1666066",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371567902130177",
+    "productId": "1666066",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378229534818306",
+    "productId": "3486000",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379055204532225",
+    "productId": "1674017",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373342705090562",
+    "productId": "3991463",
+    "specName": "材质&颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373090660974594",
+    "productId": "3991463",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377412073357314",
+    "productId": "3990408",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376026497613828",
+    "productId": "1006056",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370734946910211",
+    "productId": "1135077",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377063560249347",
+    "productId": "1666010",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377063560249347",
+    "productId": "3988148",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377063560249347",
+    "productId": "3986195",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377063560249347",
+    "productId": "1486015",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377063560249347",
+    "productId": "1667000",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374386612830210",
+    "productId": "4023751",
+    "specName": "花色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374127195127810",
+    "productId": "4023751",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373509680332802",
+    "productId": "3994471",
+    "specName": "花型",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373425295130625",
+    "productId": "3994471",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373425097998338",
+    "productId": "3988335",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373425295130625",
+    "productId": "3988335",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372554423402498",
+    "productId": "1281002",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373756678701058",
+    "productId": "4005108",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373757274292225",
+    "productId": "4005108",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375731298304002",
+    "productId": "1343000",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482381425925816321",
+    "productId": "3995143",
+    "specName": "款式",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373090262515715",
+    "productId": "3871007",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373090660974594",
+    "productId": "3871007",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374126800863233",
+    "productId": "3505001",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374127195127810",
+    "productId": "3505001",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380223636963329",
+    "productId": "3987045",
+    "specName": "款式",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370508320276481",
+    "productId": "1691024",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1369139574067957762",
+    "productId": "1379052170040578049",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1369141324204216321",
+    "productId": "1379052170040578049",
+    "specName": "尺寸",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1369141916305723393",
+    "productId": "1379052170040578049",
+    "specName": "产地",
+    "sortOrder": 2,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376026497613828",
+    "productId": "1554011",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380727570006018",
+    "productId": "4007007",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380728366923778",
+    "productId": "4007007",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378718200594434",
+    "productId": "1143021",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378718007656450",
+    "productId": "1143021",
+    "specName": "型号",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373756678701058",
+    "productId": "3995844",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373757274292225",
+    "productId": "3995844",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376026497613828",
+    "productId": "1554013",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370734946910211",
+    "productId": "1269010",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379154152357889",
+    "productId": "3844041",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370221987725315",
+    "productId": "1503004",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375731298304002",
+    "productId": "1418009",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375731298304002",
+    "productId": "1077003",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379866521337857",
+    "productId": "4011464",
+    "specName": "款式",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369432363859971",
+    "productId": "3494007",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372209060216834",
+    "productId": "4000102",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372209735499778",
+    "productId": "4000102",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377793620803585",
+    "productId": "3815023",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375467812126722",
+    "productId": "1031002",
+    "specName": "尺寸",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368871023378435",
+    "productId": "3997406",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368871023378435",
+    "productId": "1469019",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368476268068866",
+    "productId": "4001798",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368871023378435",
+    "productId": "3988985",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378515917701122",
+    "productId": "3993375",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376833829830657",
+    "productId": "1683030",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378718200594434",
+    "productId": "1554052",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378718007656450",
+    "productId": "1554052",
+    "specName": "型号",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377412073357314",
+    "productId": "4017718",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373756678701058",
+    "productId": "4005109",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373757274292225",
+    "productId": "4005109",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372728260526083",
+    "productId": "3994470",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372729053249538",
+    "productId": "3994470",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375436640059394",
+    "productId": "1076003",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373509680332802",
+    "productId": "3994908",
+    "specName": "花型",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373550994227201",
+    "productId": "3994908",
+    "specName": "尺寸",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374126800863233",
+    "productId": "4007963",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374127195127810",
+    "productId": "4007963",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373425097998338",
+    "productId": "3995195",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373425295130625",
+    "productId": "3995195",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379401486270465",
+    "productId": "3994432",
+    "specName": "香型",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379814331613187",
+    "productId": "4023100",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368871023378435",
+    "productId": "1468020",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379447048994817",
+    "productId": "1111002",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379447048994817",
+    "productId": "1458011",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373090262515715",
+    "productId": "3884023",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373090660974594",
+    "productId": "3884023",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374126800863233",
+    "productId": "4005106",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374127195127810",
+    "productId": "4005106",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374167082958850",
+    "productId": "3995845",
+    "specName": "花型",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374127195127810",
+    "productId": "3995845",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375436640059394",
+    "productId": "1418015",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370734946910211",
+    "productId": "1135075",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482381185248264194",
+    "productId": "1687060",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375131252785154",
+    "productId": "1109014",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380223636963329",
+    "productId": "3990777",
+    "specName": "款式",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376347550613505",
+    "productId": "3987992",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372294422691841",
+    "productId": "4000422",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376258379710465",
+    "productId": "1006051",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379447048994817",
+    "productId": "3506005",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376347550613505",
+    "productId": "1009026",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371294005690372",
+    "productId": "1667027",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371294198628353",
+    "productId": "1667027",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377412073357314",
+    "productId": "3998109",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375131252785154",
+    "productId": "1109013",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376026497613828",
+    "productId": "1554014",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377752424349700",
+    "productId": "3990740",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482381473485029378",
+    "productId": "4011360",
+    "specName": "米数",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378515917701122",
+    "productId": "4033959",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378134097625090",
+    "productId": "1369012",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378134164733953",
+    "productId": "1369012",
+    "specName": "电池类型",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374475712430082",
+    "productId": "4027466",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374476370935810",
+    "productId": "4027466",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370508320276481",
+    "productId": "1503001",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375731298304002",
+    "productId": "1113001",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370508320276481",
+    "productId": "1690022",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372554423402498",
+    "productId": "1436033",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372580746854401",
+    "productId": "1436033",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371294005690372",
+    "productId": "1651001",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371294198628353",
+    "productId": "1651001",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482381473485029378",
+    "productId": "4008940",
+    "specName": "米数",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482381473355005955",
+    "productId": "4008940",
+    "specName": "型号",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375731298304002",
+    "productId": "1512026",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371007673139203",
+    "productId": "4018935",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369128088076290",
+    "productId": "3995284",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377793620803585",
+    "productId": "1649012",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372687399616515",
+    "productId": "1621018",
+    "specName": "款式",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378718200594434",
+    "productId": "3533020",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378806553608194",
+    "productId": "3533020",
+    "specName": "长度",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377412073357314",
+    "productId": "3999485",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379447048994817",
+    "productId": "3529022",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376480778485761",
+    "productId": "1436010",
+    "specName": "组合装",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369031879131138",
+    "productId": "3995913",
+    "specName": "型号",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371882000973827",
+    "productId": "4000582",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371882135191554",
+    "productId": "4000582",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373090262515715",
+    "productId": "3989234",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373090660974594",
+    "productId": "3989234",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369432363859971",
+    "productId": "3995885",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374475712430082",
+    "productId": "3998535",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374476370935810",
+    "productId": "3998535",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369695296389122",
+    "productId": "3407009",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369695296389122",
+    "productId": "1462019",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371882000973827",
+    "productId": "3459033",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371882135191554",
+    "productId": "3459033",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375436640059394",
+    "productId": "1540016",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369695296389122",
+    "productId": "1471002",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379530549198849",
+    "productId": "3468024",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369270597943299",
+    "productId": "3993481",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369128088076290",
+    "productId": "3993481",
+    "specName": "规格",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375436640059394",
+    "productId": "1006058",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369432363859971",
+    "productId": "3997547",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377063560249347",
+    "productId": "4011740",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369270597943299",
+    "productId": "3993828",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369317838389249",
+    "productId": "3993828",
+    "specName": "尺寸",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377412073357314",
+    "productId": "4010699",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369432363859971",
+    "productId": "3494006",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378669651525636",
+    "productId": "1193027",
+    "specName": "线长",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375258336002050",
+    "productId": "1451027",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371007673139203",
+    "productId": "4020262",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380479724388353",
+    "productId": "3995082",
+    "specName": "图案",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369695296389122",
+    "productId": "1425006",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368476268068866",
+    "productId": "4001877",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377752424349700",
+    "productId": "3842020",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369695296389122",
+    "productId": "1425007",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369695296389122",
+    "productId": "1425011",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482381624819712002",
+    "productId": "3550194",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369432363859971",
+    "productId": "3399000",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482381132123209729",
+    "productId": "3521201",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482381267121078274",
+    "productId": "3521201",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373509680332802",
+    "productId": "3995846",
+    "specName": "花型",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373425295130625",
+    "productId": "3995846",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371882000973827",
+    "productId": "3459032",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371882135191554",
+    "productId": "3459032",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368871023378435",
+    "productId": "3987635",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369695296389122",
+    "productId": "1505052",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379530549198849",
+    "productId": "3499024",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379530549198849",
+    "productId": "1512000",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378669651525636",
+    "productId": "1115024",
+    "specName": "线长",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482381679085617153",
+    "productId": "3993694",
+    "specName": "款式",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482381132123209729",
+    "productId": "1476005",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482381185248264194",
+    "productId": "1687061",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371007673139203",
+    "productId": "4019044",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372209060216834",
+    "productId": "4001126",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372209735499778",
+    "productId": "4001126",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374814322786305",
+    "productId": "1589017",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376258379710465",
+    "productId": "1021000",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376026497613828",
+    "productId": "3406047",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376258379710465",
+    "productId": "1129016",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378848693780482",
+    "productId": "1480015",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370476816859139",
+    "productId": "1292003",
+    "specName": "口味",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371882000973827",
+    "productId": "3995078",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371882135191554",
+    "productId": "3995078",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376736224182275",
+    "productId": "1633018",
+    "specName": "尺寸",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376736354205697",
+    "productId": "1633018",
+    "specName": "季节",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376673196376065",
+    "productId": "1672002",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379154152357889",
+    "productId": "3827027",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376673196376065",
+    "productId": "3829130",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376673196376065",
+    "productId": "3988150",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368172315246595",
+    "productId": "3408074",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368172315246595",
+    "productId": "3406025",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373090262515715",
+    "productId": "1519011",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373090660974594",
+    "productId": "1519011",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368172315246595",
+    "productId": "3425018",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373090262515715",
+    "productId": "3992495",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373090660974594",
+    "productId": "3992495",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376258379710465",
+    "productId": "1006029",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380223636963329",
+    "productId": "3994144",
+    "specName": "款式",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376258379710465",
+    "productId": "3436033",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482375731298304002",
+    "productId": "1124015",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377752424349700",
+    "productId": "3990582",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372209060216834",
+    "productId": "4000620",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372209735499778",
+    "productId": "4000620",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372209060216834",
+    "productId": "4000283",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372251993112577",
+    "productId": "4000283",
+    "specName": "尺寸",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368476268068866",
+    "productId": "4001920",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377752424349700",
+    "productId": "1434006",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374475712430082",
+    "productId": "4023641",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374476370935810",
+    "productId": "4023641",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374475712430082",
+    "productId": "4023738",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374476370935810",
+    "productId": "4023738",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376833829830657",
+    "productId": "3991211",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376736224182275",
+    "productId": "3991211",
+    "specName": "尺寸",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374475712430082",
+    "productId": "3995013",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374476370935810",
+    "productId": "3995013",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374475712430082",
+    "productId": "4007784",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374476370935810",
+    "productId": "4007784",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376615356923906",
+    "productId": "3988969",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370221987725315",
+    "productId": "3388018",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368172315246595",
+    "productId": "1318002",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373756678701058",
+    "productId": "4005110",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373757274292225",
+    "productId": "4005110",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379154152357889",
+    "productId": "3440042",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372209060216834",
+    "productId": "4000464",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372251993112577",
+    "productId": "4000464",
+    "specName": "尺寸",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371567507865602",
+    "productId": "3441064",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371567902130177",
+    "productId": "3441064",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374126800863233",
+    "productId": "4000277",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374127195127810",
+    "productId": "4000277",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368476268068866",
+    "productId": "4008506",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378718200594434",
+    "productId": "1484016",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378718007656450",
+    "productId": "1484016",
+    "specName": "型号",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371007673139203",
+    "productId": "4013557",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482367872003080193",
+    "productId": "1075011",
+    "specName": "数量",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371294005690372",
+    "productId": "1109030",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371294198628353",
+    "productId": "1109030",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371294005690372",
+    "productId": "1666023",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371294198628353",
+    "productId": "1666023",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371294005690372",
+    "productId": "3818015",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371294198628353",
+    "productId": "3818015",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371294005690372",
+    "productId": "1667068",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371294198628353",
+    "productId": "1667068",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368871023378435",
+    "productId": "3997974",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377711576023042",
+    "productId": "4000009",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372294422691841",
+    "productId": "4001285",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371007673139203",
+    "productId": "3996270",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372728260526083",
+    "productId": "4007902",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372729053249538",
+    "productId": "4007902",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374814322786305",
+    "productId": "1076004",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372728260526083",
+    "productId": "4026178",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372729053249538",
+    "productId": "4026178",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372728260526083",
+    "productId": "4014237",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372729053249538",
+    "productId": "4014237",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368172315246595",
+    "productId": "3407081",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380598288973826",
+    "productId": "3997052",
+    "specName": "款式",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372554423402498",
+    "productId": "1593000",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372580746854401",
+    "productId": "1593000",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374893611909123",
+    "productId": "1306017",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369970333679619",
+    "productId": "1189005",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368172315246595",
+    "productId": "3405016",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374814322786305",
+    "productId": "1525018",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380598288973826",
+    "productId": "3991985",
+    "specName": "款式",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374475712430082",
+    "productId": "4027473",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374476370935810",
+    "productId": "4027473",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379985945755649",
+    "productId": "4019874",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379866521337857",
+    "productId": "4019874",
+    "specName": "款式",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380223636963329",
+    "productId": "3987039",
+    "specName": "款式",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380223636963329",
+    "productId": "3995478",
+    "specName": "款式",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379985945755649",
+    "productId": "4018204",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374814322786305",
+    "productId": "1085007",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380727570006018",
+    "productId": "4023115",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380728366923778",
+    "productId": "4023115",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482367815686160385",
+    "productId": "1028003",
+    "specName": "类型",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380727570006018",
+    "productId": "4023114",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373756678701058",
+    "productId": "4003104",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373757274292225",
+    "productId": "4003104",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370221987725315",
+    "productId": "3419049",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374893611909123",
+    "productId": "1306019",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371007673139203",
+    "productId": "4013716",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373090262515715",
+    "productId": "3989454",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373090660974594",
+    "productId": "3989454",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374814322786305",
+    "productId": "1540017",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369970333679619",
+    "productId": "1189003",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482378134097625090",
+    "productId": "1406008",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377412073357314",
+    "productId": "3990343",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370317026459649",
+    "productId": "1545002",
+    "specName": "口味",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370221987725315",
+    "productId": "3409008",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373425097998338",
+    "productId": "3995206",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373425295130625",
+    "productId": "3995206",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368747698257921",
+    "productId": "3986658",
+    "specName": "尺码",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368625853726723",
+    "productId": "3990319",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368625853726723",
+    "productId": "1435025",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368625853726723",
+    "productId": "4000278",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368625853726723",
+    "productId": "1435024",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368625853726723",
+    "productId": "3990698",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368715867684867",
+    "productId": "3434008",
+    "specName": "商品",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373425097998338",
+    "productId": "3995192",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482373425295130625",
+    "productId": "3995192",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371567507865602",
+    "productId": "3986614",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371567902130177",
+    "productId": "3986614",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369128088076290",
+    "productId": "3992367",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379055204532225",
+    "productId": "3992720",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380727570006018",
+    "productId": "4011468",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380223636963329",
+    "productId": "3991349",
+    "specName": "款式",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368172315246595",
+    "productId": "3847005",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482370734946910211",
+    "productId": "1135080",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482367902835408898",
+    "productId": "1183010",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1369139574067957762",
+    "productId": "1369155859933827074",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1369141324204216321",
+    "productId": "1369155859933827074",
+    "specName": "尺寸",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1369141916305723393",
+    "productId": "1369155859933827074",
+    "specName": "产地",
+    "sortOrder": 2,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482367902835408898",
+    "productId": "1131025",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369970333679619",
+    "productId": "1188007",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368417531035652",
+    "productId": "3993860",
+    "specName": "材质/尺寸",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482367902835408898",
+    "productId": "1252031",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371567507865602",
+    "productId": "3995432",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371567902130177",
+    "productId": "3995432",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371567507865602",
+    "productId": "3828009",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371567902130177",
+    "productId": "3828009",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369128088076290",
+    "productId": "3987204",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380727570006018",
+    "productId": "4013432",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482380728366923778",
+    "productId": "4013432",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482376673196376065",
+    "productId": "3828110",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371294005690372",
+    "productId": "1652031",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371294198628353",
+    "productId": "1652031",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482371007673139203",
+    "productId": "4019910",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379055204532225",
+    "productId": "3474002",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369128088076290",
+    "productId": "3991840",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368447662915586",
+    "productId": "4000295",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368172315246595",
+    "productId": "3425016",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482369970333679619",
+    "productId": "1188005",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379814331613187",
+    "productId": "4018446",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482379985945755649",
+    "productId": "4018446",
+    "specName": "规格",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368625853726723",
+    "productId": "1356007",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377752424349700",
+    "productId": "3806013",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374475712430082",
+    "productId": "4023638",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374476370935810",
+    "productId": "4023638",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377793620803585",
+    "productId": "3989748",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482367815686160385",
+    "productId": "1028004",
+    "specName": "类型",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482374814322786305",
+    "productId": "1548001",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482367902835408898",
+    "productId": "1108008",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482368476268068866",
+    "productId": "4001880",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482367902835408898",
+    "productId": "1225018",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372728260526083",
+    "productId": "4007498",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372729053249538",
+    "productId": "4007498",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372728260526083",
+    "productId": "4026450",
+    "specName": "颜色",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482372729053249538",
+    "productId": "4026450",
+    "specName": "尺码",
+    "sortOrder": 1,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377662322311170",
+    "productId": "4027998",
+    "specName": "finish亮碟多效合一洗涤块495g",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482381597632233474",
+    "productId": "4026116",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482381679085617153",
+    "productId": "3994572",
+    "specName": "款式",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  },
+  {
+    "id": "1482377063560249347",
+    "productId": "4023839",
+    "specName": "规格",
+    "sortOrder": 0,
+    "createdAt": "2026-03-24T06:22:15.281Z"
+  }
+]

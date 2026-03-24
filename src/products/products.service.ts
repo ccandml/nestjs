@@ -1,18 +1,20 @@
 import {
   BadRequestException,
   Injectable,
+  Logger,
   NotFoundException,
 } from '@nestjs/common';
-import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
 import { EntityManager, In, Repository } from 'typeorm';
 import { Product } from './entities/product.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { GoodsResult } from './types/result';
 import { ProductSku } from './entities/product-skus.entity';
+import { GuessQueryDto } from './dto/products-query.dto';
 
 @Injectable()
 export class ProductsService {
+  private readonly logger = new Logger(ProductsService.name);
+
   constructor(
     @InjectRepository(Product)
     private productRepository: Repository<Product>,
@@ -20,10 +22,36 @@ export class ProductsService {
     private skuRepository: Repository<ProductSku>,
   ) {}
 
+  // 获取”猜你喜欢“商品列表
+  async getGuessLikeProducts(query: GuessQueryDto) {
+    const { page = 1, pageSize = 10 } = query;
+    const [list, total] = await this.productRepository.findAndCount({
+      relations: ['mainImages'],
+      take: pageSize,
+      skip: (page - 1) * pageSize,
+      order: { salesCount: 'DESC' },
+    });
+
+    return {
+      counts: total,
+      pageSize,
+      pages: Math.ceil(total / pageSize),
+      page,
+      items: list.map((item) => ({
+        id: item.id,
+        name: item.name,
+        desc: item.description || '',
+        price: Number(item.price),
+        picture: item.mainImages?.[0]?.imageUrl || '',
+        discount: 1,
+        orderNum: item.salesCount || 0,
+      })),
+    };
+  }
+
   // 获取多个商品数据
   async getProducts(data: any) {
     const { categoryId, pageSize, page } = data;
-
     const [list, total] = await this.productRepository.findAndCount({
       where: { categoryId },
       relations: ['mainImages'], // 为了拿 picture
@@ -75,6 +103,12 @@ export class ProductsService {
 
     if (!product) return null;
 
+    if (!product.detailProperties?.length) {
+      this.logger.warn(
+        `商品详情属性为空: productId=${id}, detailProperties=${product.detailProperties?.length ?? 0}, detailImages=${product.detailImages?.length ?? 0}, specs=${product.specs?.length ?? 0}, skus=${product.skus?.length ?? 0}`,
+      );
+    }
+
     return {
       id: product.id,
       name: product.name,
@@ -116,13 +150,9 @@ export class ProductsService {
           name: value.valueName,
           desc: '',
           picture: '',
-          available: true, // 先全部 true，后面再优化
+          available: true, // 商品是否可选（联动库存时用到），现在没做库存，可以先写死 true
         })),
       })),
-
-      /** 先给空（你现在没做地址 & 相似商品） */
-      similarProducts: [],
-      userAddresses: [],
     };
   }
 

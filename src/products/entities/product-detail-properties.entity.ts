@@ -37,8 +37,7 @@ export class ProductDetailProperty {
 
   @Column({
     name: 'property_value',
-    type: 'varchar',
-    length: 255,
+    type: 'text',
     comment: '参数值',
   })
   propertyValue: string;
