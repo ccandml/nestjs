@@ -18,7 +18,9 @@ export class RolesGuard implements CanActivate {
     >(ROLES_KEY, [context.getHandler(), context.getClass()]);
     // 先通过jwt守卫获取用户
     const req = context.switchToHttp().getRequest();
-    const userList = await this.userService.findUsers({ id: req.user.userId });
+    const userList = await this.userService.findUsersWithRoles({
+      id: req.user.userId,
+    });
     const user = userList[0];
 
     // 如果没有装饰器（不需要权限），直接放行

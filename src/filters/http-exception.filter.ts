@@ -14,18 +14,18 @@ export class HttpExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp(); // 切换到 HTTP 上下文，获取 HTTP 相关的请求 / 响应对象
     const response = ctx.getResponse();
-    const request = ctx.getRequest();
     const status = exception.getStatus();
-
-    console.log('response', response);
-    console.log('request', request);
-    console.log('status', status);
+    const exceptionResponse = exception.getResponse();
+    const message =
+      typeof exceptionResponse === 'object' && exceptionResponse
+        ? (exceptionResponse as any).message || exception.message
+        : exception.message;
 
     // 设置响应状态码，并返回自定义的 JSON 格式异常信息
     response.status(status).json({
       code: status,
       timestamp: new Date().toISOString(), // 异常发生的时间戳
-      message: exception.message || exception.name,
+      message,
     });
   }
 }

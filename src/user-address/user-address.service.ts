@@ -22,9 +22,9 @@ export class UserAddressService {
       isDefault = 1;
     }
     // 如果新增地址要设为默认，先清空其他默认地址
-    // if (isDefault === 1) {
-    //   await this.addressRepository.update({ userId }, { isDefault: 0 });
-    // }
+    if (isDefault === 1) {
+      await this.addressRepository.update({ userId }, { isDefault: 0 });
+    }
 
     const address = this.addressRepository.create({
       userId,
@@ -43,6 +43,7 @@ export class UserAddressService {
       success: true,
     };
   }
+
   // 请求地址列表
   async getUserAddressList(userId: string) {
     const list = await this.addressRepository.find({
@@ -65,11 +66,7 @@ export class UserAddressService {
     }));
   }
   // 更新地址
-  async updateAddress(
-    id: string,
-    userId: string,
-    dto: UpdateUserAddressDto,
-  ) {
+  async updateAddress(id: string, userId: string, dto: UpdateUserAddressDto) {
     const address = await this.addressRepository.findOne({
       where: { id, userId },
     });

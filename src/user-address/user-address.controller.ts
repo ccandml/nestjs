@@ -3,7 +3,6 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   Put,
@@ -19,7 +18,7 @@ import { JwtGuard } from 'src/guards/jwt.guard';
 @Controller('user-address')
 export class UserAddressController {
   constructor(private readonly userAddressService: UserAddressService) {}
-  // 新建地址
+  // 新增地址
   @Post()
   createAddress(@Req() req, @Body() dto: CreateUserAddressDto) {
     const userId = req.user.userId;

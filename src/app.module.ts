@@ -4,10 +4,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as Joi from 'joi';
 import { RolesModule } from './roles/roles.module';
-import { LogsModule } from './logs/logs.module';
-import { User } from './user/user.entity';
-import { Profile } from './user/profile.entity';
-import { Logs } from './logs/logs.entity';
+import { User } from './user/entities/user.entity';
 import { Roles } from './roles/roles.entity';
 import { ConfigEnum } from './enum/config.enum';
 import { AuthModule } from './auth/auth.module';
@@ -31,6 +28,11 @@ import { UserAddress } from './user-address/entities/user-address.entity';
 import { OrderModule } from './order/order.module';
 import { Order } from './order/entities/order.entity';
 import { OrderItem } from './order/entities/order-item.entity';
+import { CategoryNav } from './categories/entities/category-nav.entity';
+import { RecommendModule } from './recommend/recommend.module';
+import { Recommend } from './recommend/entities/recommend.entity';
+import { BannerModule } from './banner/banner.module';
+import { Banner } from './banner/entities/banner.entity';
 
 const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
 
@@ -63,11 +65,10 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
         database: configService.get(ConfigEnum.DB_DATABASE),
         entities: [
           User,
-          Profile,
-          Logs,
           Roles,
           Menus,
           Category,
+          CategoryNav,
           Product,
           ProductSpec,
           ProductSpecValue,
@@ -80,6 +81,8 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
           UserAddress,
           Order,
           OrderItem,
+          Recommend,
+          Banner,
         ],
         synchronize: true,
         logging: true, // 打印SQL日志
@@ -87,7 +90,6 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
     }),
     UserModule,
     RolesModule,
-    LogsModule,
     AuthModule,
     MenuModule,
     CategoriesModule,
@@ -95,6 +97,8 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
     CartItemModule,
     UserAddressModule,
     OrderModule,
+    RecommendModule,
+    BannerModule,
   ],
   controllers: [],
   providers: [],
