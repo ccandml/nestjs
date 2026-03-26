@@ -4,13 +4,43 @@ import { UpdateUserAddressDto } from './dto/update-user-address.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserAddress } from './entities/user-address.entity';
 import { Repository } from 'typeorm';
+import { AddressItem } from './types/result';
+import { CityCode } from './entities/city-code.entity';
 
 @Injectable()
 export class UserAddressService {
   constructor(
     @InjectRepository(UserAddress)
     private addressRepository: Repository<UserAddress>,
+    @InjectRepository(CityCode)
+    private cityCodeRepository: Repository<CityCode>,
   ) {}
+
+  // 根据单个地区编码解析完整地区名，用于落库 fullLocation。
+  private async resolveFullLocation(locationCode: string): Promise<string> {
+    const row = await this.cityCodeRepository.findOne({
+      where: {
+        code: locationCode,
+      },
+    });
+    if (!row) {
+      throw new NotFoundException(`地区编码不存在: ${locationCode}`);
+    }
+    return row.fullName;
+  }
+
+  private toAddressItem(item: UserAddress): AddressItem {
+    return {
+      id: item.id,
+      receiver: item.receiver,
+      contact: item.contact,
+      locationCode: item.locationCode,
+      address: item.address,
+      isDefault: item.isDefault,
+      fullLocation: item.fullLocation,
+    };
+  }
+
   // 新增地址
   async createAddress(userId: string, dto: CreateUserAddressDto) {
     const count = await this.addressRepository.count({
@@ -26,17 +56,16 @@ export class UserAddressService {
       await this.addressRepository.update({ userId }, { isDefault: 0 });
     }
 
+    const fullLocation = await this.resolveFullLocation(dto.locationCode);
+
     const address = this.addressRepository.create({
       userId,
       receiver: dto.receiver,
       contact: dto.contact,
-      provinceCode: dto.provinceCode,
-      cityCode: dto.cityCode,
-      countyCode: dto.countyCode,
+      locationCode: dto.locationCode,
       address: dto.address,
       isDefault,
-      // 先拼接城市编码，后面改！
-      fullLocation: `${dto.provinceCode} ${dto.cityCode} ${dto.countyCode}`,
+      fullLocation,
     });
     await this.addressRepository.save(address);
     return {
@@ -45,7 +74,7 @@ export class UserAddressService {
   }
 
   // 请求地址列表
-  async getUserAddressList(userId: string) {
+  async getUserAddressList(userId: string): Promise<AddressItem[]> {
     const list = await this.addressRepository.find({
       where: { userId },
       order: {
@@ -53,17 +82,7 @@ export class UserAddressService {
         id: 'DESC',
       },
     });
-    return list.map((item) => ({
-      id: item.id,
-      receiver: item.receiver,
-      contact: item.contact,
-      provinceCode: item.provinceCode,
-      cityCode: item.cityCode,
-      countyCode: item.countyCode,
-      address: item.address,
-      isDefault: item.isDefault,
-      fullLocation: item.fullLocation,
-    }));
+    return list.map((item) => this.toAddressItem(item));
   }
   // 更新地址
   async updateAddress(id: string, userId: string, dto: UpdateUserAddressDto) {
@@ -82,14 +101,14 @@ export class UserAddressService {
         .andWhere('id != :id', { id })
         .execute();
     }
-    address.receiver = dto.receiver;
-    address.contact = dto.contact;
-    address.provinceCode = dto.provinceCode;
-    address.cityCode = dto.cityCode;
-    address.countyCode = dto.countyCode;
-    address.address = dto.address;
-    address.isDefault = dto.isDefault;
-    address.fullLocation = `${dto.provinceCode} ${dto.cityCode} ${dto.countyCode}`;
+    address.receiver = dto.receiver ?? address.receiver;
+    address.contact = dto.contact ?? address.contact;
+    address.locationCode = dto.locationCode ?? address.locationCode;
+    address.address = dto.address ?? address.address;
+    address.isDefault = dto.isDefault ?? address.isDefault;
+    if (dto.locationCode) {
+      address.fullLocation = await this.resolveFullLocation(dto.locationCode);
+    }
 
     await this.addressRepository.save(address);
 
@@ -122,14 +141,14 @@ export class UserAddressService {
       success: true,
     };
   }
-  // 查出这条地址，并确保它属于当前用户
-  async getAddressById(userId: string, id: string) {
+  // 查出这条地址详情，并确保它属于当前用户
+  async getAddressById(userId: string, id: string): Promise<AddressItem> {
     const address = await this.addressRepository.findOne({
       where: { userId, id },
     });
     if (!address) {
       throw new NotFoundException('地址不存在');
     }
-    return address;
+    return this.toAddressItem(address);
   }
 }

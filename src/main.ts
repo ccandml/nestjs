@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './filters/http-exception.filter';
 import { ValidationPipe } from '@nestjs/common';
 import { SerializeInterceptor } from './interceptors/serialize/serialize.interceptor';
+import { TypeormFilter } from './filters/typeorm/typeorm.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -12,6 +13,7 @@ async function bootstrap() {
   // 注册全局过滤器
   // 可以注册多个全局过滤器，后注册的过滤器优先捕获异常
   app.useGlobalFilters(new HttpExceptionFilter());
+  app.useGlobalFilters(new TypeormFilter()); // 注册第二个过滤器，优先捕获异常
 
   // 全局（管道）
   app.useGlobalPipes(

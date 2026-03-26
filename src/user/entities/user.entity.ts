@@ -38,7 +38,7 @@ export class User {
 
   @Column({
     type: 'varchar',
-    length: 255,
+    length: 1000,
     nullable: true,
     comment: '头像',
   })

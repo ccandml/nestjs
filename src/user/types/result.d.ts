@@ -6,8 +6,6 @@ export type ProfileDetail = {
   id: number;
   /** 昵称 */
   username: string;
-  /** 密码 */
-  password: string;
   /** 性别 */
   gender?: Gender;
   /** 生日 */

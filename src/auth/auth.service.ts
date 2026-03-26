@@ -18,11 +18,10 @@ export class AuthService {
 
   async signin(dto: SigninUserDTO) {
     const { username, password } = dto;
-    const userList = await this.userService.findUsers({ username });
-    if (userList.length === 0) {
+    const user = await this.userService.findUsersWithRoles({ username });
+    if (!user) {
       throw new ForbiddenException('用户不存在');
     }
-    const user = userList[0];
     // 直接密码明文比对（测试阶段）
     // const isPasswordValid = await argon2.verify(user.password, password);
     if (user.password === password) {
@@ -32,6 +31,8 @@ export class AuthService {
           username: user.username,
           sub: user.id,
         }),
+        id: user.id,
+        username: user.username,
       };
     }
     throw new UnauthorizedException();

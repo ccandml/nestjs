@@ -25,7 +25,7 @@ export class CreateUserDto {
   birthday?: string;
 
   @IsString()
-  avatar: string;
+  avatar?: string;
 
   @IsOptional()
   @IsString()

@@ -40,28 +40,12 @@ export class UserAddress {
   contact: string;
 
   @Column({
-    name: 'province_code',
+    name: 'location_code',
     type: 'varchar',
-    length: 20,
-    comment: '省份编码',
+    length: 9,
+    comment: '地区编码（单编码）',
   })
-  provinceCode: string;
-
-  @Column({
-    name: 'city_code',
-    type: 'varchar',
-    length: 20,
-    comment: '城市编码',
-  })
-  cityCode: string;
-
-  @Column({
-    name: 'county_code',
-    type: 'varchar',
-    length: 20,
-    comment: '区/县编码',
-  })
-  countyCode: string;
+  locationCode: string;
 
   @Column({
     type: 'varchar',

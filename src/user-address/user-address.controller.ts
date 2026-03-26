@@ -25,10 +25,16 @@ export class UserAddressController {
     return this.userAddressService.createAddress(userId, dto);
   }
   // 获取地址列表
-  @Get()
+  @Get('list')
   getUserAddressList(@Req() req) {
     const userId = req.user.userId;
     return this.userAddressService.getUserAddressList(userId);
+  }
+  // 获取地址详情
+  @Get('/:id')
+  getAddressDetail(@Req() req, @Param('id') id: string) {
+    const userId = req.user.userId;
+    return this.userAddressService.getAddressById(userId, id);
   }
   // 修改地址
   @Put('/:id')

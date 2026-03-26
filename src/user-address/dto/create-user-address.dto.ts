@@ -24,36 +24,16 @@ export class CreateUserAddressDto {
   })
   contact: string;
 
-  // 省份编码
-  @IsNotEmpty({ message: '省份编码不能为空' })
-  @IsString({ message: '省份编码必须是字符串' })
-  @Matches(/^\d{6}$/, { message: '省份编码必须是6位数字' })
-  @Matches(/^\d{2}0000$/, { message: '省份编码格式不正确（后4位应为0000）' })
-  provinceCode: string;
-
-  // 城市编码
-  @IsNotEmpty({ message: '城市编码不能为空' })
-  @IsString({ message: '城市编码必须是字符串' })
-  @Matches(/^\d{6}$/, { message: '城市编码必须是6位数字' })
-  @Matches(/^\d{4}00$/, { message: '城市编码格式不正确（后2位应为00）' })
-  @Matches(/^(?!\d{2}0000$)\d{6}$/, {
-    message: '城市编码不能是省级编码',
-  })
-  cityCode: string;
-
-  // 区县编码
-  @IsNotEmpty({ message: '区县编码不能为空' })
-  @IsString({ message: '区县编码必须是字符串' })
-  @Matches(/^\d{6}$/, { message: '区县编码必须是6位数字' })
-  @Matches(/^(?!\d{4}00$)\d{6}$/, {
-    message: '区县编码不能是省/市级编码',
-  })
-  countyCode: string;
+  // 地区编码（支持6位或9位）
+  @IsNotEmpty({ message: '地区编码不能为空' })
+  @IsString({ message: '地区编码必须是字符串' })
+  @Matches(/^\d{6}(\d{3})?$/, { message: '地区编码必须是6位或9位数字' })
+  locationCode: string;
 
   // 详细地址
   @IsNotEmpty({ message: '详细地址不能为空' })
   @IsString()
-  @Length(5, 100, { message: '详细地址长度在5-100之间' })
+  @Length(3, 100, { message: '详细地址长度在3-100之间' })
   address: string;
 
   // 是否默认地址：0=否 1=是

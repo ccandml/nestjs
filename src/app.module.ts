@@ -25,6 +25,7 @@ import { CartItemModule } from './cart-item/cart-item.module';
 import { CartItem } from './cart-item/entities/cart-item.entity';
 import { UserAddressModule } from './user-address/user-address.module';
 import { UserAddress } from './user-address/entities/user-address.entity';
+import { CityCode } from './user-address/entities/city-code.entity';
 import { OrderModule } from './order/order.module';
 import { Order } from './order/entities/order.entity';
 import { OrderItem } from './order/entities/order-item.entity';
@@ -79,6 +80,7 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
           ProductDetailImage,
           CartItem,
           UserAddress,
+          CityCode,
           Order,
           OrderItem,
           Recommend,

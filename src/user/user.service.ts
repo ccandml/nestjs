@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { Roles } from 'src/roles/roles.entity';
 import * as argon2 from 'argon2';
 import { ProfileDetail } from './types/result';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
@@ -13,53 +14,37 @@ export class UserService {
     private userRepository: Repository<User>,
   ) {}
 
-  // 获取用户信息
-  async findUsers(dto: any): Promise<ProfileDetail[]> {
-    const { id, username, password, page = 1, pageSize = 10 } = dto;
-    const where: Record<string, unknown> = {};
-
-    if (id !== undefined && id !== null) {
-      where.id = id;
-    }
-    if (username) {
-      where.username = username;
-    }
-    if (password) {
-      where.password = password;
-    }
-
-    const users = await this.userRepository.find({
+  // 根据用户ID获取用户信息（从token中获取userId调用）
+  async getUserById(userId: number): Promise<ProfileDetail> {
+    const user = await this.userRepository.findOne({
       select: {
         id: true,
         username: true,
-        password: true,
         gender: true,
         birthday: true,
         avatar: true,
         fullLocation: true,
         profession: true,
       },
-      where,
-      order: {
-        id: 'ASC',
-      },
-      take: pageSize,
-      skip: (page - 1) * pageSize,
+      where: { id: userId },
     });
 
-    return users.map((item) => ({
-      id: item.id,
-      username: item.username,
-      password: item.password,
-      gender: item.gender,
-      birthday: item.birthday,
-      avatar: item.avatar,
-      fullLocation: item.fullLocation,
-      profession: item.profession,
-    }));
+    if (!user) {
+      throw new NotFoundException('用户不存在');
+    }
+
+    return {
+      id: user.id,
+      username: user.username,
+      gender: user.gender,
+      birthday: user.birthday,
+      avatar: user.avatar,
+      fullLocation: user.fullLocation,
+      profession: user.profession,
+    };
   }
 
-  // 权限守卫使用：查询用户并携带角色
+  // JWT,权限守卫使用：查询用户并携带角色
   async findUsersWithRoles(dto: { id?: number | string; username?: string }) {
     const where: Record<string, unknown> = {};
 
@@ -70,19 +55,17 @@ export class UserService {
       where.username = dto.username;
     }
 
-    return this.userRepository.find({
+    return this.userRepository.findOne({
       select: {
         id: true,
         username: true,
+        password: true,
         roles: {
           id: true,
         },
       },
       where,
       relations: ['roles'],
-      order: {
-        id: 'ASC',
-      },
     });
   }
 
@@ -100,5 +83,34 @@ export class UserService {
     userTemp.password = await argon2.hash(user.password);
     const saveUser = await this.userRepository.save(userTemp); // 操作数据库，插入or更新 数据
     return saveUser;
+  }
+
+  // 修改用户信息：前端传入的新字段覆盖数据库中的旧字段
+  async updateUserById(
+    userId: number,
+    dto: UpdateUserDto,
+  ): Promise<ProfileDetail> {
+    const user = await this.userRepository.findOne({ where: { id: userId } });
+    if (!user) {
+      throw new NotFoundException('用户不存在');
+    }
+
+    const updatableKeys: Array<keyof UpdateUserDto> = [
+      'username',
+      'gender',
+      'birthday',
+      'avatar',
+      'fullLocation',
+      'profession',
+    ];
+
+    for (const key of updatableKeys) {
+      if (dto[key] !== undefined) {
+        (user as any)[key] = dto[key];
+      }
+    }
+
+    await this.userRepository.save(user);
+    return this.getUserById(userId);
   }
 }
