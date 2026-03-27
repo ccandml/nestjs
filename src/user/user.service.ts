@@ -1,9 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { Roles } from 'src/roles/roles.entity';
-import * as argon2 from 'argon2';
 import { ProfileDetail } from './types/result';
 import { UpdateUserDto } from './dto/update-user.dto';
 
@@ -12,6 +11,8 @@ export class UserService {
   constructor(
     @InjectRepository(User)
     private userRepository: Repository<User>,
+    @InjectRepository(Roles)
+    private rolesRepository: Repository<Roles>,
   ) {}
 
   // 根据用户ID获取用户信息（从token中获取userId调用）
@@ -63,6 +64,7 @@ export class UserService {
         roles: {
           id: true,
         },
+        avatar: true,
       },
       where,
       relations: ['roles'],
@@ -72,15 +74,35 @@ export class UserService {
   // 新增用户
   async addUser(user: Partial<User>) {
     const userTemp = this.userRepository.create(user); // 创建对象，并且自动补充没有的字段
-    // 自动添加为 "普通用户"
-    if (!user.roles || user.roles.length === 0) {
-      userTemp.roles = [{ id: 3 } as Roles]; // orm会自动关联user里面的roles表的id,但是ts会报错，必须断言
-    } else {
-      // 根据前端传的[id,id]来对应roles名
-      userTemp.roles = user.roles.map((id) => ({ id }) as unknown as Roles);
+
+    // 只关联已存在角色，不在创建用户时新建角色
+    const roleIdsFromPayload = Array.isArray(user.roles)
+      ? user.roles
+          .map((role) =>
+            typeof role === 'number' ? role : (role as Roles | undefined)?.id,
+          )
+          .filter((id): id is number => Number.isInteger(id) && id > 0)
+      : [];
+
+    // 未传角色时默认关联“普通用户”角色（id=3）
+    const roleIds =
+      roleIdsFromPayload.length > 0
+        ? Array.from(new Set(roleIdsFromPayload))
+        : [3];
+
+    const roles = await this.rolesRepository.find({
+      where: { id: In(roleIds) },
+    });
+
+    // 强校验：所有角色都必须存在，避免出现无效关联
+    if (roles.length !== roleIds.length) {
+      throw new NotFoundException('角色不存在');
     }
+
+    userTemp.roles = roles;
+
     // 对密码进行加密存储！！！
-    userTemp.password = await argon2.hash(user.password);
+    // userTemp.password = await argon2.hash(user.password);
     const saveUser = await this.userRepository.save(userTemp); // 操作数据库，插入or更新 数据
     return saveUser;
   }

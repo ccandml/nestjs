@@ -61,8 +61,9 @@ export class User {
   profession?: string;
 
   @ManyToMany(() => Roles, (roles) => roles.users, {
-    cascade: true, // 级联保存
-    onDelete: 'CASCADE', // 级联删除 如果关联的表被删了，同时也删除我
+    // 仅维护关联关系，不级联新增/修改角色实体，避免创建新角色
+    cascade: false,
+    onDelete: 'CASCADE', // 当 user 或 role 被删除时，自动删除 user_roles 中的关联记录
   })
   @JoinTable({ name: 'user_roles' })
   roles: Roles[];

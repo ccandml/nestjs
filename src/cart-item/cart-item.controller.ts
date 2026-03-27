@@ -3,19 +3,19 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   Req,
   UseGuards,
+  Put,
 } from '@nestjs/common';
 import { CartItemService } from './cart-item.service';
 import {
   UpdateAllCartSelectedDto,
-  UpdateCartItemDto,
-  UpdateCartSelectedDto,
+  UpdateCartMutationDto,
 } from './dto/update-cart-item.dto';
 import { JwtGuard } from 'src/guards/jwt.guard';
+import { CreateCartItemDto } from './dto/create-cart-item.dto';
 
 @UseGuards(JwtGuard)
 @Controller('cart-item')
@@ -24,19 +24,18 @@ export class CartItemController {
 
   // 添加购物车
   @Post()
-  addToCart(@Req() req, @Body() dto: UpdateCartItemDto) {
-    dto.userId = req.user.userId;
-    return this.cartItemService.addToCart(dto);
+  addToCart(@Req() req, @Body() dto: CreateCartItemDto) {
+    return this.cartItemService.addToCart(req.user.userId, dto);
   }
   // 查询购物车
   @Get()
   getCartList(@Req() req) {
     return this.cartItemService.getCartList(req.user.userId);
   }
-  // 修改购物车数量
-  @Patch('/:id')
-  updateCartItemCount(@Param('id') id: string, @Body() dto: UpdateCartItemDto) {
-    return this.cartItemService.updateCartItemCount(id, dto);
+  // 修改购物车（数量/选中状态）
+  @Put('/:id')
+  updateCartItem(@Param('id') id: string, @Body() dto: UpdateCartMutationDto) {
+    return this.cartItemService.updateCartItem(id, dto);
   }
   // 删除购物车
   @Delete('/:id')
@@ -44,16 +43,11 @@ export class CartItemController {
     return this.cartItemService.removeCartItem(id);
   }
   // 购物车全选
-  @Patch('/selected/all')
+  @Put('/selected/all')
   updateAllCartSelected(@Req() req, @Body() dto: UpdateAllCartSelectedDto) {
-    return this.cartItemService.updateAllCartSelected(req.user.userId, dto.selected);
-  }
-  // 修改购物车选中状态
-  @Patch('/:id/selected')
-  updateCartItemSelected(
-    @Param('id') id: string,
-    @Body() dto: UpdateCartSelectedDto,
-  ) {
-    return this.cartItemService.updateCartItemSelected(id, dto.selected);
+    return this.cartItemService.updateAllCartSelected(
+      req.user.userId,
+      dto.selected,
+    );
   }
 }

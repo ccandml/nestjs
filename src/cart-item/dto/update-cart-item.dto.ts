@@ -1,18 +1,21 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateCartItemDto } from './create-cart-item.dto';
-import { IsBoolean, IsString } from 'class-validator';
+import { IsBoolean, IsInt, IsOptional, Min } from 'class-validator';
 
 export class UpdateCartItemDto extends PartialType(CreateCartItemDto) {}
 
-export class UpdateCartSelectedDto {
+export class UpdateCartMutationDto {
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  count?: number;
+
+  @IsOptional()
   @IsBoolean()
-  selected: boolean;
+  selected?: boolean;
 }
 
 export class UpdateAllCartSelectedDto {
-  @IsString()
-  userId: string;
-
   @IsBoolean()
   selected: boolean;
 }

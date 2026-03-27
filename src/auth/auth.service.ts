@@ -33,6 +33,7 @@ export class AuthService {
         }),
         id: user.id,
         username: user.username,
+        avatar: user.avatar,
       };
     }
     throw new UnauthorizedException();

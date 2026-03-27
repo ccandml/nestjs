@@ -38,6 +38,7 @@ async function bootstrap() {
 
   // 全局前缀
   app.setGlobalPrefix('cyx/v1');
+
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
