@@ -12,9 +12,14 @@ import { UserAddressService } from 'src/user-address/user-address.service';
 import { ProductsService } from 'src/products/products.service';
 import { ProductSku } from 'src/products/entities/product-skus.entity';
 import { QueryOrderDto } from './dto/query-order.dto';
+import { OrderCreateParams } from './dto/create-order.dto';
+import { OrderResult, OrderListResult, LogisticItem } from './types/result';
 
 @Injectable()
 export class OrderService {
+  // 超时未支付订单的支付过期时间（秒）
+  private readonly PAYMENT_TIMEOUT_SECONDS = 60;
+
   constructor(
     @InjectRepository(Order)
     private orderRepository: Repository<Order>,
@@ -26,6 +31,78 @@ export class OrderService {
     private productsService: ProductsService,
   ) {}
   /* 思路： 两个接口入口，一个实现逻辑*/
+
+  // 统一计算返回给前端的 countdown（接口字段保持不变）
+  private calcCountdown(order: Order, now = new Date()) {
+    if (Number(order.orderState) !== 1) {
+      return -1;
+    }
+    const expireMs = order.expireTime
+      ? new Date(order.expireTime).getTime()
+      : NaN;
+    if (Number.isNaN(expireMs)) {
+      return -1;
+    }
+    const remainMs = expireMs - now.getTime();
+    if (remainMs <= 0) {
+      return -1;
+    }
+    return Math.ceil(remainMs / 1000);
+  }
+
+  // 待支付订单超过60秒自动取消
+  private async expireOrderIfNeeded(order: Order) {
+    if (Number(order.orderState) !== 1) {
+      return order;
+    }
+
+    // 与前端返回 countdown 使用同一套判断，避免出现 countdown=-1 但状态未更新
+    if (this.calcCountdown(order) !== -1) {
+      return order;
+    }
+
+    const result = await this.orderRepository
+      .createQueryBuilder()
+      .update(Order)
+      .set({
+        orderState: 6 as any,
+        cancelReason: '超时未支付',
+        cancelTime: () => 'CURRENT_TIMESTAMP',
+      })
+      .where('id = :id', { id: order.id })
+      .andWhere('order_state = :orderState', { orderState: 1 })
+      .execute();
+
+    if (!result.affected) {
+      return order;
+    }
+
+    const latestOrder = await this.orderRepository.findOne({
+      where: { id: order.id as any },
+    });
+    return latestOrder || order;
+  }
+
+  // 查询列表前，先把该用户超时未支付订单统一转为已取消
+  private async expireUserOrdersIfNeeded(userId: string) {
+    const pendingOrders = await this.orderRepository.find({
+      where: {
+        userId,
+        orderState: 1 as any,
+        isVisible: 1,
+      },
+    });
+
+    if (!pendingOrders.length) {
+      return;
+    }
+
+    await Promise.all(
+      pendingOrders.map((pendingOrder) =>
+        this.expireOrderIfNeeded(pendingOrder),
+      ),
+    );
+  }
 
   // 立即购买预览
   async getBuyNowPreview(
@@ -87,6 +164,7 @@ export class OrderService {
         price: Number(sku.price),
         count: item.count,
         totalPrice: Number(itemTotalPrice.toFixed(2)),
+        totalPayPrice: Number(itemTotalPrice.toFixed(2)),
       };
     });
 
@@ -108,10 +186,8 @@ export class OrderService {
     const skuList = await this.productsService.validateSkuStock(items);
     // 2. 构建预览商品 + 金额
     const { goods, totalPrice } = this.buildPreviewGoods(items, skuList);
-    // 3. 获取用户地址列表
-    const userAddresses = await this.addressService.getUserAddressList(userId);
     // 4. 汇总
-    const postFee = 0;
+    const postFee = 0; // 运费
     const totalPayPrice = totalPrice + postFee;
     return {
       goods,
@@ -120,41 +196,51 @@ export class OrderService {
         postFee: Number(postFee.toFixed(2)),
         totalPayPrice: Number(totalPayPrice.toFixed(2)),
       },
-      userAddresses,
     };
   }
 
-  // 立即购买（商品详情页）
-  async buyNow(
-    userId: string,
-    dto: {
-      skuId: string;
-      count: string;
-      addressId: string;
-    },
-  ) {
-    const { skuId, count, addressId } = dto;
-    const num = Number(count);
-    if (!Number.isInteger(num) || num <= 0) {
-      throw new BadRequestException('购买数量不合法');
+  // 创建订单（buy-now/cart 统一入口）
+  async create(userId: string, dto: OrderCreateParams) {
+    const { goods } = dto;
+    if (!Array.isArray(goods) || goods.length === 0) {
+      throw new BadRequestException('下单商品不能为空');
     }
-    const items = [{ skuId, count: num }];
-    return this.createOrder(userId, addressId, items, false);
+
+    const items = goods.map((item) => {
+      const count = Number(item.count);
+      if (!item.skuId || !Number.isInteger(count) || count <= 0) {
+        throw new BadRequestException('商品参数不合法');
+      }
+      return {
+        skuId: item.skuId,
+        count,
+      };
+    });
+
+    const fromCart = await this.isSameAsSelectedCartItems(userId, items);
+    return this.createOrder(userId, dto, items, fromCart);
   }
 
-  // 购物车购买（购物车下单）
-  async createFromCart(userId: string, dto: { addressId: string }) {
-    const { addressId } = dto;
-    // 获取购物车选中商品
+  // 如果提交商品与当前购物车已选商品完全一致，视为购物车下单
+  private async isSameAsSelectedCartItems(
+    userId: string,
+    items: { skuId: string; count: number }[],
+  ) {
     const cartList = await this.cartItemService.getSelectedCartItems(userId);
-    if (!cartList.length) {
-      throw new BadRequestException('未选择任何商品');
+    if (!cartList.length || cartList.length !== items.length) {
+      return false;
     }
-    const items = cartList.map((item) => ({
-      skuId: item.skuId,
-      count: item.quantity,
-    }));
-    return this.createOrder(userId, addressId, items, true);
+
+    const cartMap = new Map(
+      cartList.map((item) => [item.skuId, item.quantity]),
+    );
+    for (const item of items) {
+      if (cartMap.get(item.skuId) !== item.count) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   // 拼接规格字段
@@ -174,13 +260,44 @@ export class OrderService {
     return `${prefix}${timestamp}${random}`;
   }
 
+  /** 获取物流日志 */
+  async findLogistics(
+    userId: string,
+    orderId: string,
+  ): Promise<LogisticItem[]> {
+    const order = await this.orderRepository.findOne({
+      where: {
+        id: orderId as any,
+        userId,
+        isVisible: 1,
+      },
+    });
+
+    if (!order) {
+      throw new NotFoundException('订单不存在');
+    }
+
+    if (!order.deliveryTime) {
+      throw new BadRequestException('订单未发货，暂无物流日志');
+    }
+
+    return [
+      { id: '1', text: '包裹已出库，运输途中' },
+      { id: '2', text: '商品已送到中转站，正在分配配送员' },
+      { id: '3', text: '配送员已取件，即将开始派送' },
+      { id: '4', text: '商品已签收，感谢您的使用' },
+    ];
+  }
+
   // 核心下单 （生成订单快照、订单表）-->  写入数据库
   async createOrder(
     userId: string,
-    addressId: string,
+    dto: OrderCreateParams,
     items: { skuId: string; count: number }[],
     fromCart: boolean,
   ) {
+    const { addressId, deliveryTimeType, buyerMessage, payType, payChannel } =
+      dto;
     if (!items.length) {
       throw new BadRequestException('下单商品不能为空');
     }
@@ -226,14 +343,23 @@ export class OrderService {
 
     // 4. 事务
     return this.dataSource.transaction(async (manager) => {
+      const now = new Date();
+      const expireTime = new Date(
+        now.getTime() + this.PAYMENT_TIMEOUT_SECONDS * 1000,
+      );
+
       // 订单表
       const order = manager.create(Order, {
         userId,
         orderNo: this.generateOrderNo(),
         orderState: 1,
-        // 支付方式：创建阶段默认在线支付（未支付）
-        payType: 1,
-        payChannel: null,
+        isVisible: 1,
+        createTime: now,
+        expireTime,
+        deliveryTimeType,
+        buyerMessage,
+        payType,
+        payChannel: payType === 1 ? payChannel : null,
         // 收货人姓名
         receiverContact: address.receiver,
         // 联系方式
@@ -270,11 +396,19 @@ export class OrderService {
   }
 
   // 查询订单列表
-  async findOrderList(userId: string, queryDto: QueryOrderDto) {
+  async findOrderList(
+    userId: string,
+    queryDto: QueryOrderDto,
+  ): Promise<OrderListResult> {
     const { page = 1, pageSize = 10, orderState = 0 } = queryDto;
+
+    // 先做一次批量过期同步，确保后续状态筛选与分页都是最新状态
+    await this.expireUserOrdersIfNeeded(userId);
+
     /** ================== 1️⃣ 查询订单（分页 + 状态筛选） ================== */
     const qb = this.orderRepository.createQueryBuilder('order');
     qb.where('order.userId = :userId', { userId });
+    qb.andWhere('order.isVisible = :isVisible', { isVisible: 1 });
     // 状态筛选（0 = 全部）
     if (orderState !== 0) {
       qb.andWhere('order.orderState = :orderState', { orderState });
@@ -293,8 +427,10 @@ export class OrderService {
         pageSize,
       };
     }
+    const latestOrders = orders;
+
     /** ================== 2️⃣ 批量查订单商品（避免 N+1） ================== */
-    const orderIds = orders.map((item) => item.id);
+    const orderIds = latestOrders.map((item) => item.id);
     const orderItems = await this.orderItemRepository.find({
       where: {
         orderId: In(orderIds),
@@ -310,7 +446,7 @@ export class OrderService {
       orderItemsMap[key].push(item);
     }
     /** ================== 4️⃣ 组装返回数据 ================== */
-    const items = orders.map((order) => {
+    const items = latestOrders.map((order) => {
       const currentItems = orderItemsMap[String(order.id)] ?? [];
       /** 👉 商品列表转换（order_items → skus） */
       const skus = currentItems.map((item) => ({
@@ -327,16 +463,8 @@ export class OrderService {
         (sum, item) => sum + Number(item.quantity),
         0,
       );
-      /** 👉 倒计时（只针对待付款） */
-      let countdown = -1;
-      if (Number(order.orderState) === 1 && order.createTime) {
-        const createTime = new Date(order.createTime).getTime();
-        if (!Number.isNaN(createTime)) {
-          const deadline = createTime + 30 * 60 * 1000; // 30分钟
-          const remain = Math.floor((deadline - Date.now()) / 1000);
-          countdown = remain > 0 ? remain : -1;
-        }
-      }
+      /** 👉 countdown：过期为 -1，未过期为剩余秒数 */
+      const countdown = this.calcCountdown(order);
       /** 👉 时间格式化 */
       let createTimeStr = '';
       if (order.createTime) {
@@ -381,12 +509,13 @@ export class OrderService {
   }
 
   // 查询订单详情
-  async findOrderDetail(userId: string, orderId: string) {
+  async findOrderDetail(userId: string, orderId: string): Promise<OrderResult> {
     /** ================== 1️⃣ 查询订单主表 ================== */
     const order = await this.orderRepository.findOne({
       where: {
         id: orderId as any,
         userId, // 只能查当前用户自己的订单
+        isVisible: 1,
       },
     });
 
@@ -394,10 +523,12 @@ export class OrderService {
       throw new NotFoundException('订单不存在');
     }
 
+    const latestOrder = await this.expireOrderIfNeeded(order);
+
     /** ================== 2️⃣ 查询该订单下的商品 ================== */
     const orderItems = await this.orderItemRepository.find({
       where: {
-        orderId: order.id as any,
+        orderId: latestOrder.id as any,
       },
       order: {
         id: 'ASC',
@@ -415,22 +546,13 @@ export class OrderService {
       image: item.picture ?? '',
     }));
 
-    /** ================== 4️⃣ 计算倒计时（仅待付款） ================== */
-    let countdown = -1;
-    if (Number(order.orderState) === 1 && order.createTime) {
-      const createTime = new Date(order.createTime).getTime();
-
-      if (!Number.isNaN(createTime)) {
-        const deadline = createTime + 30 * 60 * 1000; // 30分钟未支付自动失效
-        const remain = Math.floor((deadline - Date.now()) / 1000);
-        countdown = remain > 0 ? remain : -1;
-      }
-    }
+    /** ================== 4️⃣ countdown：过期为 -1，未过期为剩余秒数 ================== */
+    const countdown = this.calcCountdown(latestOrder);
 
     /** ================== 5️⃣ 格式化下单时间 ================== */
     let createTimeStr = '';
-    if (order.createTime) {
-      const d = new Date(order.createTime);
+    if (latestOrder.createTime) {
+      const d = new Date(latestOrder.createTime);
 
       if (!Number.isNaN(d.getTime())) {
         const y = d.getFullYear();
@@ -446,20 +568,20 @@ export class OrderService {
 
     /** ================== 6️⃣ 返回前端详情结构 ================== */
     return {
-      id: String(order.id),
-      orderState: Number(order.orderState),
+      id: String(latestOrder.id),
+      orderState: Number(latestOrder.orderState),
       countdown,
       skus,
 
-      receiverContact: order.receiverContact ?? '',
-      receiverMobile: order.receiverMobile ?? '',
-      receiverAddress: order.receiverAddress ?? '',
+      receiverContact: latestOrder.receiverContact ?? '',
+      receiverMobile: latestOrder.receiverMobile ?? '',
+      receiverAddress: latestOrder.receiverAddress ?? '',
 
       createTime: createTimeStr,
 
-      totalMoney: Number(order.totalMoney ?? 0),
-      postFee: Number(order.postFee ?? 0),
-      payMoney: Number(order.payMoney ?? 0),
+      totalMoney: Number(latestOrder.totalMoney ?? 0),
+      postFee: Number(latestOrder.postFee ?? 0),
+      payMoney: Number(latestOrder.payMoney ?? 0),
     };
   }
 
@@ -470,24 +592,34 @@ export class OrderService {
       where: {
         id: orderId as any,
         userId,
+        isVisible: 1,
       },
     });
     if (!order) {
       throw new NotFoundException('订单不存在');
     }
-    // 只有待付款才能确认支付
-    if (Number(order.orderState) !== 1) {
+
+    const latestOrder = await this.expireOrderIfNeeded(order);
+
+    // 只有待付款才能确认支付（拦截所有非待付款状态，包含已取消的订单）
+    if (
+      Number(latestOrder.orderState) !== 1 ||
+      this.calcCountdown(latestOrder) === -1
+    ) {
+      if (Number(latestOrder.orderState) === 6) {
+        throw new BadRequestException('订单超时未支付，已自动取消');
+      }
       throw new BadRequestException('当前订单状态不能确认支付');
     }
     // 更新状态和支付时间
-    order.orderState = 2 as any;
-    order.payTime = new Date() as any;
+    latestOrder.orderState = 2 as any;
+    latestOrder.payTime = new Date() as any;
 
-    await this.orderRepository.save(order);
+    await this.orderRepository.save(latestOrder);
 
     return {
-      id: String(order.id),
-      orderState: Number(order.orderState),
+      id: String(latestOrder.id),
+      orderState: Number(latestOrder.orderState),
       message: '支付成功',
     };
   }
@@ -499,6 +631,7 @@ export class OrderService {
       where: {
         id: orderId as any,
         userId,
+        isVisible: 1,
       },
     });
 
@@ -531,6 +664,7 @@ export class OrderService {
       where: {
         id: orderId as any,
         userId,
+        isVisible: 1,
       },
     });
     if (!order) {
@@ -560,25 +694,50 @@ export class OrderService {
       where: {
         id: orderId as any,
         userId,
+        isVisible: 1,
       },
     });
     if (!order) {
       throw new NotFoundException('订单不存在');
     }
+
+    const latestOrder = await this.expireOrderIfNeeded(order);
+
     // 只有待付款才能取消
-    if (Number(order.orderState) !== 1) {
+    if (Number(latestOrder.orderState) !== 1) {
       throw new BadRequestException('当前订单状态不能取消');
     }
     // 更新状态和取消时间
-    order.orderState = 6 as any;
-    order.cancelTime = new Date() as any;
+    latestOrder.orderState = 6 as any;
+    latestOrder.cancelTime = new Date() as any;
 
-    await this.orderRepository.save(order);
+    await this.orderRepository.save(latestOrder);
 
     return {
-      id: String(order.id),
-      orderState: Number(order.orderState),
+      id: String(latestOrder.id),
+      orderState: Number(latestOrder.orderState),
       message: '取消订单成功',
+    };
+  }
+
+  /** 删除订单（逻辑删除：改为隐藏） */
+  async hideOrder(userId: string, orderId: string) {
+    const result = await this.orderRepository
+      .createQueryBuilder()
+      .update(Order)
+      .set({ isVisible: 0 })
+      .where('id = :id', { id: orderId })
+      .andWhere('user_id = :userId', { userId })
+      .andWhere('is_visible = :isVisible', { isVisible: 1 })
+      .execute();
+
+    if (!result.affected) {
+      throw new NotFoundException('订单不存在');
+    }
+
+    return {
+      id: String(orderId),
+      message: '删除订单成功',
     };
   }
 }

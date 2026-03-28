@@ -43,11 +43,11 @@ export class Order {
   orderState: number;
 
   @Column({
-    type: 'int',
-    default: -1,
-    comment: '倒计时秒数',
+    name: 'expire_time',
+    type: 'datetime',
+    comment: '支付过期时间（下单时间 + 60 秒）',
   })
-  countdown: number;
+  expireTime: Date;
 
   @Column({
     name: 'receiver_contact',
@@ -193,6 +193,14 @@ export class Order {
     comment: '取消原因',
   })
   cancelReason: string;
+
+  @Column({
+    name: 'is_visible',
+    type: 'tinyint',
+    default: 1,
+    comment: '是否展示，1展示 0隐藏',
+  })
+  isVisible: number;
 
   @OneToMany(() => OrderItem, (item) => item.order)
   items: OrderItem[];
