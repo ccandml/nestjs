@@ -10,6 +10,7 @@ import { ProductSku } from './entities/product-skus.entity';
 import { ProductSpecValue } from './entities/product-spec-values.entity';
 import { ProductSpec } from './entities/product-specs.entity';
 import { Product } from './entities/product.entity';
+import { AdminProductsController } from './admin-products.controller';
 
 @Global()
 @Module({
@@ -25,7 +26,7 @@ import { Product } from './entities/product.entity';
       ProductDetailImage,
     ]),
   ],
-  controllers: [ProductsController],
+  controllers: [ProductsController, AdminProductsController],
   providers: [ProductsService],
   exports: [ProductsService],
 })

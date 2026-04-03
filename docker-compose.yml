@@ -6,9 +6,11 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: testdb
+      MYSQL_DATABASE: nestdb
+      TZ: Asia/Shanghai
     ports:
       - '3307:3306'
+    command: --default-time-zone='+08:00'
     volumes:
       - mysql_data:/var/lib/mysql # 数据保存在本地
 

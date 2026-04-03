@@ -30,7 +30,12 @@ async function bootstrap() {
 
   // 跨域配置
   app.enableCors({
-    origin: 'http://localhost:5173',
+    origin: [
+      'https://uniapp-frotend.pages.dev',
+      'http://localhost:5173',
+      'http://localhost:5174',
+      'http://localhost:3000',
+    ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'source-client'],

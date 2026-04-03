@@ -5,15 +5,23 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Order } from './entities/order.entity';
-import { DataSource, In, Repository } from 'typeorm';
+import { DataSource, EntityManager, In, Repository } from 'typeorm';
 import { OrderItem } from './entities/order-item.entity';
 import { CartItemService } from '../cart-item/cart-item.service';
 import { UserAddressService } from 'src/user-address/user-address.service';
 import { ProductsService } from 'src/products/products.service';
 import { ProductSku } from 'src/products/entities/product-skus.entity';
 import { QueryOrderDto } from './dto/query-order.dto';
+import { AdminQueryOrderDto } from './dto/admin-query-order.dto';
 import { OrderCreateParams } from './dto/create-order.dto';
-import { OrderResult, OrderListResult, LogisticItem } from './types/result';
+import {
+  AdminOrderDetailResult,
+  AdminOrderListResult,
+  OrderResult,
+  OrderListResult,
+  LogisticItem,
+} from './types/result';
+import { User } from 'src/user/entities/user.entity';
 
 @Injectable()
 export class OrderService {
@@ -67,7 +75,8 @@ export class OrderService {
       .set({
         orderState: 6 as any,
         cancelReason: '超时未支付',
-        cancelTime: () => 'CURRENT_TIMESTAMP',
+        // 取消时间由应用层生成，避免依赖数据库会话时区。
+        cancelTime: new Date() as any,
       })
       .where('id = :id', { id: order.id })
       .andWhere('order_state = :orderState', { orderState: 1 })
@@ -119,6 +128,194 @@ export class OrderService {
     }
     const items = [{ skuId, count: num }];
     return this.buildOrderPreview(userId, items);
+  }
+
+  // 管理端订单列表：分页 + 筛选 + 单字段排序
+  async queryAdminOrderList(
+    query: AdminQueryOrderDto,
+  ): Promise<AdminOrderListResult> {
+    const {
+      keyword,
+      orderState,
+      page = 1,
+      pageSize = 10,
+      sortBy,
+      sortOrder = 'DESC',
+    } = query;
+
+    const qb = this.orderRepository
+      .createQueryBuilder('o')
+      .leftJoin(User, 'u', 'u.id = o.user_id')
+      .select([
+        'o.id AS id',
+        'o.pay_money AS payMoney',
+        'o.create_time AS createTime',
+        'o.order_state AS orderState',
+        'u.username AS username',
+        'u.avatar AS userAvatar',
+      ]);
+
+    if (keyword?.trim()) {
+      const normalizedKeyword = keyword.trim();
+      // 支持用户名模糊匹配，或按订单id模糊匹配
+      qb.andWhere(
+        '(u.username LIKE :keyword OR CAST(o.id AS CHAR) LIKE :keyword)',
+        {
+          keyword: `%${normalizedKeyword}%`,
+        },
+      );
+    }
+
+    if (orderState !== undefined && orderState !== 0) {
+      qb.andWhere('o.order_state = :orderState', { orderState });
+    }
+
+    const sortFieldMap: Record<
+      NonNullable<AdminQueryOrderDto['sortBy']>,
+      string
+    > = {
+      payMoney: 'o.pay_money',
+      createTime: 'o.create_time',
+    };
+
+    if (sortBy) {
+      qb.orderBy(sortFieldMap[sortBy], sortOrder);
+    } else {
+      qb.orderBy('o.create_time', 'DESC');
+    }
+
+    const total = await qb.getCount();
+    const rows = await qb
+      .offset((page - 1) * pageSize)
+      .limit(pageSize)
+      .getRawMany<{
+        id: string;
+        payMoney: string;
+        createTime: string;
+        orderState: string;
+        username: string | null;
+        userAvatar: string | null;
+      }>();
+
+    return {
+      counts: total,
+      page,
+      pageSize,
+      pages: Math.ceil(total / pageSize),
+      items: rows.map((row) => ({
+        id: row.id,
+        userAvatar: row.userAvatar || '',
+        username: row.username || '',
+        totalPayPrice: Number(row.payMoney || 0),
+        createTime: this.formatDateTime(row.createTime),
+        orderState: Number(row.orderState),
+      })),
+    };
+  }
+
+  // 管理端订单详情：基础信息 + 收货金额信息 + SKU快照列表
+  async queryAdminOrderDetail(
+    orderId: string,
+  ): Promise<AdminOrderDetailResult> {
+    const order = await this.orderRepository
+      .createQueryBuilder('o')
+      .leftJoin(User, 'u', 'u.id = o.user_id')
+      .select([
+        'o.id AS id',
+        'o.order_state AS orderState',
+        'o.create_time AS createTime',
+        'o.receiver_contact AS receiverContact',
+        'o.receiver_mobile AS receiverMobile',
+        'o.receiver_address AS receiverAddress',
+        'o.post_fee AS postFee',
+        'o.pay_money AS payMoney',
+        'u.username AS username',
+      ])
+      .where('o.id = :orderId', { orderId })
+      .getRawOne<{
+        id: string;
+        orderState: string;
+        createTime: string;
+        receiverContact: string;
+        receiverMobile: string;
+        receiverAddress: string;
+        postFee: string;
+        payMoney: string;
+        username: string | null;
+      }>();
+
+    if (!order) {
+      throw new NotFoundException('订单不存在');
+    }
+
+    const skuRows = await this.orderItemRepository
+      .createQueryBuilder('oi')
+      .select([
+        'oi.sku_id AS skuId',
+        'oi.picture AS picture',
+        'oi.name AS name',
+        'oi.attrs_text AS attrsText',
+        'oi.pay_price AS payPrice',
+        'oi.quantity AS quantity',
+        'oi.total_pay_price AS totalPayPrice',
+      ])
+      .where('oi.order_id = :orderId', { orderId })
+      .orderBy('oi.id', 'ASC')
+      .getRawMany<{
+        skuId: string;
+        picture: string | null;
+        name: string;
+        attrsText: string | null;
+        payPrice: string;
+        quantity: string;
+        totalPayPrice: string;
+      }>();
+
+    return {
+      id: order.id,
+      username: order.username || '',
+      orderState: Number(order.orderState),
+      createTime: this.formatDateTime(order.createTime),
+      receiverContact: order.receiverContact,
+      receiverMobile: order.receiverMobile,
+      receiverAddress: order.receiverAddress,
+      postFee: Number(order.postFee || 0),
+      payMoney: Number(order.payMoney || 0),
+      skus: skuRows.map((item) => ({
+        skuId: item.skuId,
+        picture: item.picture || '',
+        name: item.name,
+        attrsText: item.attrsText || '',
+        payPrice: Number(item.payPrice || 0),
+        quantity: Number(item.quantity || 0),
+        totalPayPrice: Number(item.totalPayPrice || 0),
+      })),
+    };
+  }
+
+  // 管理端修改订单状态
+  async updateAdminOrderState(
+    orderId: string,
+    orderState: number,
+  ): Promise<{ id: string; orderState: number; message: string }> {
+    // 查询订单是否存在
+    const order = await this.orderRepository.findOne({
+      where: { id: orderId as any },
+    });
+
+    if (!order) {
+      throw new NotFoundException('订单不存在');
+    }
+
+    // 更新订单状态
+    order.orderState = orderState as any;
+    await this.orderRepository.save(order);
+
+    return {
+      id: order.id,
+      orderState: Number(order.orderState),
+      message: '订单状态更新成功',
+    };
   }
 
   // 购物车购买预览
@@ -243,6 +440,24 @@ export class OrderService {
     return true;
   }
 
+  // 格式化时间：ISO 格式转换为 YYYY-MM-DD HH:mm:ss 格式
+  private formatDateTime(dateValue: any): string {
+    if (!dateValue) return '';
+    try {
+      const d = new Date(dateValue);
+      if (Number.isNaN(d.getTime())) return '';
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      const h = String(d.getHours()).padStart(2, '0');
+      const min = String(d.getMinutes()).padStart(2, '0');
+      const s = String(d.getSeconds()).padStart(2, '0');
+      return `${y}-${m}-${day} ${h}:${min}:${s}`;
+    } catch {
+      return '';
+    }
+  }
+
   // 拼接规格字段
   private buildAttrsText(sku: ProductSku) {
     if (!sku.skuSpecs?.length) {
@@ -340,6 +555,11 @@ export class OrderService {
 
     const postFee = 0;
     const totalPayPrice = totalPrice + postFee;
+    // 下单时固化完整收货地址快照：省市区 + 详细地址，避免后续地址变更影响历史订单展示。
+    const receiverAddressSnapshot = [address.fullLocation, address.address]
+      .filter((part) => !!part && part.trim().length > 0)
+      .join(' ')
+      .trim();
 
     // 4. 事务
     return this.dataSource.transaction(async (manager) => {
@@ -364,7 +584,7 @@ export class OrderService {
         receiverContact: address.receiver,
         // 联系方式
         receiverMobile: address.contact,
-        receiverAddress: address.address,
+        receiverAddress: receiverAddressSnapshot,
 
         totalMoney: totalPrice.toFixed(2),
         postFee: postFee.toFixed(2),
@@ -587,41 +807,134 @@ export class OrderService {
 
   /** 确认支付：待付款 -> 待发货 */
   async payOrder(userId: string, orderId: string) {
-    // 只能操作自己的订单
-    const order = await this.orderRepository.findOne({
-      where: {
-        id: orderId as any,
-        userId,
-        isVisible: 1,
-      },
-    });
-    if (!order) {
-      throw new NotFoundException('订单不存在');
-    }
+    return this.dataSource.transaction(async (manager) => {
+      const orderRepo = manager.getRepository(Order);
 
-    const latestOrder = await this.expireOrderIfNeeded(order);
+      // 只能操作自己的订单
+      const order = await orderRepo.findOne({
+        where: {
+          id: orderId as any,
+          userId,
+          isVisible: 1,
+        },
+      });
+      if (!order) {
+        throw new NotFoundException('订单不存在');
+      }
 
-    // 只有待付款才能确认支付（拦截所有非待付款状态，包含已取消的订单）
-    if (
-      Number(latestOrder.orderState) !== 1 ||
-      this.calcCountdown(latestOrder) === -1
-    ) {
-      if (Number(latestOrder.orderState) === 6) {
+      // 过期订单在支付入口即时转为已取消，避免把超时单计入销量。
+      if (Number(order.orderState) === 1 && this.calcCountdown(order) === -1) {
+        await manager
+          .createQueryBuilder()
+          .update(Order)
+          .set({
+            orderState: 6 as any,
+            cancelReason: '超时未支付',
+            cancelTime: new Date() as any,
+          })
+          .where('id = :id', { id: order.id })
+          .andWhere('order_state = :orderState', { orderState: 1 })
+          .execute();
+
         throw new BadRequestException('订单超时未支付，已自动取消');
       }
-      throw new BadRequestException('当前订单状态不能确认支付');
+
+      // 只有待付款才能确认支付（拦截所有非待付款状态，包含已取消订单）
+      if (Number(order.orderState) !== 1) {
+        if (Number(order.orderState) === 6) {
+          throw new BadRequestException('订单超时未支付，已自动取消');
+        }
+        throw new BadRequestException('当前订单状态不能确认支付');
+      }
+
+      // 用条件更新防止并发重复支付。
+      const updateResult = await manager
+        .createQueryBuilder()
+        .update(Order)
+        .set({
+          orderState: 2 as any,
+          payTime: new Date() as any,
+        })
+        .where('id = :id', { id: order.id })
+        .andWhere('order_state = :orderState', { orderState: 1 })
+        .execute();
+
+      if (!updateResult.affected) {
+        throw new BadRequestException('当前订单状态不能确认支付');
+      }
+
+      // 支付成功后累计 SKU 销量，并同步商品销量（触发器失效时兜底）。
+      await this.increaseSkuSalesAfterPayment(order.id, manager);
+
+      return {
+        id: String(order.id),
+        orderState: 2,
+        message: '支付成功',
+      };
+    });
+  }
+
+  /**
+   * 支付成功后按订单明细累计 SKU 销量。
+   * 说明：商品销量由 SKU 聚合得出，这里额外做一次商品聚合同步作为兜底。
+   */
+  private async increaseSkuSalesAfterPayment(
+    orderId: string,
+    manager: EntityManager,
+  ) {
+    const rows = await manager
+      .getRepository(OrderItem)
+      .createQueryBuilder('oi')
+      .select('oi.sku_id', 'skuId')
+      .addSelect('oi.spu_id', 'spuId')
+      .addSelect('COALESCE(SUM(oi.quantity), 0)', 'quantity')
+      .where('oi.order_id = :orderId', { orderId })
+      .groupBy('oi.sku_id')
+      .addGroupBy('oi.spu_id')
+      .getRawMany<{
+        skuId: string;
+        spuId: string;
+        quantity: string;
+      }>();
+
+    if (!rows.length) {
+      return;
     }
-    // 更新状态和支付时间
-    latestOrder.orderState = 2 as any;
-    latestOrder.payTime = new Date() as any;
 
-    await this.orderRepository.save(latestOrder);
+    const productIds = new Set<string>();
 
-    return {
-      id: String(latestOrder.id),
-      orderState: Number(latestOrder.orderState),
-      message: '支付成功',
-    };
+    for (const row of rows) {
+      const qty = Number(row.quantity || 0);
+      if (qty <= 0) {
+        continue;
+      }
+
+      await manager
+        .createQueryBuilder()
+        .update(ProductSku)
+        .set({
+          salesCount: () => `sales_count + ${qty}`,
+        })
+        .where('id = :skuId', { skuId: row.skuId })
+        .execute();
+
+      productIds.add(row.spuId);
+    }
+
+    for (const productId of productIds) {
+      await manager.query(
+        `
+          UPDATE products p
+          SET p.sales_count = (
+            SELECT COALESCE(SUM(ps.sales_count), 0)
+            FROM product_skus ps
+            WHERE ps.product_id = p.id
+          )
+          WHERE p.id = ?
+        `,
+        [productId],
+      );
+    }
   }
 
   /** 手动模拟发货：待发货 -> 待收货 */

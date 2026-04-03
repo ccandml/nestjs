@@ -7,6 +7,7 @@ import { OrderItem } from './entities/order-item.entity';
 import { ProductsModule } from 'src/products/products.module';
 import { UserAddressModule } from 'src/user-address/user-address.module';
 import { CartItemModule } from 'src/cart-item/cart-item.module';
+import { AdminOrderController } from './admin-order.controller';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { CartItemModule } from 'src/cart-item/cart-item.module';
     UserAddressModule,
     CartItemModule,
   ],
-  controllers: [OrderController],
+  controllers: [OrderController, AdminOrderController],
   providers: [OrderService],
 })
 export class OrderModule {}

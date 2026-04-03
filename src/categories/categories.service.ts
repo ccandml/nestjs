@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Category } from './entities/category.entity';
 import { Repository, In } from 'typeorm';
 import { Product } from 'src/products/entities/product.entity';
-import { ClassifyData } from './types/result';
+import { ClassifyData, ClassifyResult } from './types/result';
 import { GoodsItems } from 'src/types/global';
 import { CategoryNav } from './entities/category-nav.entity';
 
@@ -106,6 +106,38 @@ export class CategoriesService {
         children,
       };
     });
+  }
+
+  // 返回精简分类结构：一级分类 + 二级分类名称，用于轻量级分类列表场景
+  async getClassifyResult(): Promise<ClassifyResult[]> {
+    const categories = await this.categoryRepository.find({
+      where: { isVisible: 1 },
+      order: { level: 'ASC', sortOrder: 'ASC', id: 'ASC' },
+    });
+
+    if (!categories.length) {
+      return [];
+    }
+
+    const levelOneCategories = categories.filter((item) => item.level === 1);
+    const levelTwoCategories = categories.filter((item) => item.level === 2);
+
+    // 预先按 parentId 建立二级分类索引，避免在一级循环中重复全量 filter
+    const childrenMap = new Map<string, ClassifyResult['children']>();
+    for (const category of levelTwoCategories) {
+      const currentChildren = childrenMap.get(category.parentId) || [];
+      currentChildren.push({
+        id: category.id,
+        name: category.name,
+      });
+      childrenMap.set(category.parentId, currentChildren);
+    }
+
+    return levelOneCategories.map((category) => ({
+      id: category.id,
+      name: category.name,
+      children: childrenMap.get(category.id) || [],
+    }));
   }
 
   // 获取分类导航数据

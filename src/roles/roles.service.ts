@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Roles } from './roles.entity';
 import { Repository } from 'typeorm';
@@ -17,10 +17,21 @@ export class RolesService {
   // 更新角色
   async updateRole(id: number, dto: UpdateRoleDto) {
     const role = await this.findOne(id);
-    return this.rolesRepository.merge(role, dto);
+    if (!role) {
+      throw new NotFoundException('角色不存在');
+    }
+
+    const mergedRole = this.rolesRepository.merge(role, dto);
+    return this.rolesRepository.save(mergedRole);
   }
   // 删除角色
-  delteRole(id: number) {
-    return this.rolesRepository.delete(id);
+  async deleteRole(id: number) {
+    const result = await this.rolesRepository.delete(id);
+
+    if (!result.affected) {
+      throw new NotFoundException('角色不存在');
+    }
+
+    return result;
   }
 }

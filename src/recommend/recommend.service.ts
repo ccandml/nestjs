@@ -30,7 +30,10 @@ export class RecommendService {
     });
     // 查询所有有主图的商品
     const products = await this.productRepository.find({
-      where: { mainImage: Not(IsNull()) }, // 过滤有主图的商品（mainImage不为空）
+      where: {
+        mainImage: Not(IsNull()),
+        status: 1,
+      }, // 过滤有主图且已上架的商品
       select: ['mainImage'],
     });
 
@@ -91,7 +94,10 @@ export class RecommendService {
     const safePageSize =
       Number.isFinite(pageSize) && pageSize > 0 ? Math.floor(pageSize) : 10;
     const total = await this.productRepository.count({
-      where: { mainImage: Not(IsNull()) },
+      where: {
+        mainImage: Not(IsNull()),
+        status: 1,
+      },
     });
     const totalPages = total > 0 ? Math.ceil(total / safePageSize) : 0;
     const currentPage = totalPages > 0 ? Math.min(safePage, totalPages) : 1;
@@ -133,6 +139,7 @@ export class RecommendService {
           .createQueryBuilder('p')
           .select(['p.id', 'p.name', 'p.price', 'p.mainImage'])
           .where('p.mainImage IS NOT NULL')
+          .andWhere('p.status = :status', { status: 1 })
           .orderBy('RAND()')
           .offset(currentSkip)
           .limit(safePageSize)
@@ -144,6 +151,7 @@ export class RecommendService {
             .createQueryBuilder('p')
             .select(['p.id', 'p.name', 'p.price', 'p.mainImage'])
             .where('p.mainImage IS NOT NULL')
+            .andWhere('p.status = :status', { status: 1 })
             .orderBy('RAND()')
             .limit(safePageSize)
             .getMany();

@@ -40,6 +40,8 @@ export type DetailsPropertyItem = {
 export type SkuItem = {
   /** id */
   id: string;
+  /** 是否可售（映射 SKU status） */
+  available: boolean;
   /** 库存 */
   inventory: number;
   /** 原价 */
@@ -80,4 +82,28 @@ export type SpecValueItem = {
   name: string;
   /** 可选值图片链接 */
   picture: string;
+};
+
+// 商品列表接口返回类型
+export type ProductsList = {
+  counts: number;
+  page: number;
+  pageSize: number;
+  pages: number;
+  items: ProductsItem[];
+};
+// 商品列表接口返回的单个商品类型
+export type ProductsItem = {
+  id: string;
+  name: string;
+  desc: string;
+  price: number;
+  picture: string;
+  discount: number;
+  /** 销量 */
+  orderNum: number;
+  /** 是否上架可售（后台列表返回） */
+  available?: boolean;
+  /** 商品总库存 */
+  stock?: number;
 };

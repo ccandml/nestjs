@@ -34,6 +34,7 @@ import { RecommendModule } from './recommend/recommend.module';
 import { Recommend } from './recommend/entities/recommend.entity';
 import { BannerModule } from './banner/banner.module';
 import { Banner } from './banner/entities/banner.entity';
+import { StatisticsModule } from './statistics/statistics.module';
 
 const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
 
@@ -50,7 +51,7 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
         DB_USERNAME: Joi.string().default('root'),
         DB_PASSWORD: Joi.string().default('example'),
         DB_DATABASE: Joi.string().default('testdb'),
-        DB_SYNCHRONIZE: Joi.boolean().default(true),
+        DB_SYNCHRONIZE: Joi.boolean().default(false),
       }),
     }),
     // 异步配置TypeORM（动态读取环境变量）
@@ -64,6 +65,7 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
         username: configService.get(ConfigEnum.DB_USERNAME),
         password: configService.get(ConfigEnum.DB_PASSWORD),
         database: configService.get(ConfigEnum.DB_DATABASE),
+        timezone: '+08:00', // 设置时区为东八区，确保数据库时间正确
         entities: [
           User,
           Roles,
@@ -86,8 +88,13 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
           Recommend,
           Banner,
         ],
-        synchronize: true,
+        // 是否自动同步表结构由环境变量控制，生产环境必须关闭，避免启动时误改表结构。
+        synchronize:
+          configService.get<boolean>(ConfigEnum.DB_SYNCHRONIZE) ?? false,
         logging: true, // 打印SQL日志
+        ssl: {
+          rejectUnauthorized: false,
+        },
       }),
     }),
     UserModule,
@@ -101,6 +108,7 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
     OrderModule,
     RecommendModule,
     BannerModule,
+    StatisticsModule,
   ],
   controllers: [],
   providers: [],

@@ -5,6 +5,8 @@ import {
   Column,
   ManyToMany,
   JoinTable,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 export const GENDER_VALUES = ['女', '男', '未知'] as const;
@@ -67,4 +69,18 @@ export class User {
   })
   @JoinTable({ name: 'user_roles' })
   roles: Roles[];
+
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'datetime',
+    comment: '创建时间',
+  })
+  createdAt: Date;
+
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'datetime',
+    comment: '更新时间',
+  })
+  updatedAt: Date;
 }

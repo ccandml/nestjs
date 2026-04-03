@@ -15,4 +15,10 @@ export class AuthController {
   signup(@Body() dto: SigninUserDTO) {
     return this.authService.signup(dto);
   }
+
+  // 管理端登录：只允许超级管理员（id=1）和管理员（id=2）登录。
+  @Post('admin-signin')
+  adminSignin(@Body() dto: SigninUserDTO) {
+    return this.authService.adminSignin(dto);
+  }
 }

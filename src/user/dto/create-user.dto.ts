@@ -24,6 +24,7 @@ export class CreateUserDto {
   @IsDateString()
   birthday?: string;
 
+  @IsOptional()
   @IsString()
   avatar?: string;
 

@@ -12,7 +12,8 @@ export class ProductsController {
   // 商品搜索
   @Get('search')
   searchProducts(@Query() query: SearchProductsQueryDto) {
-    return this.productsService.searchProducts(query);
+    // 兼容历史路由，复用同一套查询逻辑
+    return this.productsService.queryProductsList(query);
   }
 
   // 获取”猜你喜欢“商品列表
