@@ -32,7 +32,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'https://uniapp-frotend.pages.dev',
-      'https://back-frotend.pages.dev/',
+      'https://back-frotend.pages.dev',
       'http://localhost:5173',
       'http://localhost:5174',
       'http://localhost:3000',
