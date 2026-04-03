@@ -1,4 +1,8 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
+  "compilerOptions": {
+    "outDir": "./dist",   // 输出目录
+    "rootDir": "./src"    // 源码目录
+  },
+  "exclude": ["node_modules", "test", "dist", "**/*.spec.ts"]
 }
