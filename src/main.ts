@@ -4,6 +4,7 @@ import { HttpExceptionFilter } from './filters/http-exception.filter';
 import { ValidationPipe } from '@nestjs/common';
 import { SerializeInterceptor } from './interceptors/serialize/serialize.interceptor';
 import { TypeormFilter } from './filters/typeorm/typeorm.filter';
+import { UserRateLimitGuard } from './guards/user-rate-limit.guard';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -28,15 +29,13 @@ async function bootstrap() {
   // 全局拦截器
   app.useGlobalInterceptors(new SerializeInterceptor());
 
+  // 全局限流：同一 IP 访问同一接口频率限制。
+  app.useGlobalGuards(new UserRateLimitGuard());
+
   // 跨域配置
   app.enableCors({
-    origin: [
-      'https://uniapp-frotend.pages.dev',
-      'https://back-frotend.pages.dev',
-      'http://localhost:5173',
-      'http://localhost:5174',
-      'http://localhost:3000',
-    ],
+    // 直接放开所有来源，便于前后端联调。
+    origin: true,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'source-client'],

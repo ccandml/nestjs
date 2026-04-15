@@ -21,4 +21,11 @@ export class AuthController {
   adminSignin(@Body() dto: SigninUserDTO) {
     return this.authService.adminSignin(dto);
   }
+
+  // 微信小程序登录：前端传 code，后端调用微信官方接口获得 openid，
+  // 然后根据 openid 登录用户（不存在则自动注册）
+  @Post('wechat-signin')
+  wechatSignin(@Body() body: { code: string }) {
+    return this.authService.wechatSignin(body.code);
+  }
 }

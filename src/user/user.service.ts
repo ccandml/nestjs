@@ -352,6 +352,7 @@ export class UserService {
         id: true,
         username: true,
         password: true,
+        openid: true,
         roles: {
           id: true,
           name: true,
@@ -359,6 +360,24 @@ export class UserService {
         avatar: true,
       },
       where,
+      relations: ['roles'],
+    });
+  }
+
+  // 微信小程序登录：根据 openid 查询用户并携带角色
+  async findUserByOpenid(openid: string) {
+    return this.userRepository.findOne({
+      select: {
+        id: true,
+        username: true,
+        openid: true,
+        avatar: true,
+        roles: {
+          id: true,
+          name: true,
+        },
+      },
+      where: { openid },
       relations: ['roles'],
     });
   }

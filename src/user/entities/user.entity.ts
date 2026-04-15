@@ -62,6 +62,15 @@ export class User {
   })
   profession?: string;
 
+  @Column({
+    type: 'varchar',
+    length: 128,
+    nullable: true,
+    unique: true,
+    comment: '微信小程序用户唯一标识',
+  })
+  openid?: string;
+
   @ManyToMany(() => Roles, (roles) => roles.users, {
     // 仅维护关联关系，不级联新增/修改角色实体，避免创建新角色
     cascade: false,

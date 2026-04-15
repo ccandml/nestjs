@@ -6,6 +6,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ConfigEnum } from 'src/enum/config.enum';
+import { WechatService } from './wechat.service';
 
 @Module({
   imports: [
@@ -21,6 +22,6 @@ import { ConfigEnum } from 'src/enum/config.enum';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy],
+  providers: [AuthService, JwtStrategy, WechatService],
 })
 export class AuthModule {}

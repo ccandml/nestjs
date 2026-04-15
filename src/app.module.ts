@@ -35,6 +35,8 @@ import { Recommend } from './recommend/entities/recommend.entity';
 import { BannerModule } from './banner/banner.module';
 import { Banner } from './banner/entities/banner.entity';
 import { StatisticsModule } from './statistics/statistics.module';
+import { NoticeModule } from './notice/notice.module';
+import { Notice } from './notice/entities/notice.entity';
 
 const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
 
@@ -87,6 +89,7 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
           OrderItem,
           Recommend,
           Banner,
+          Notice,
         ],
         // 是否自动同步表结构由环境变量控制，生产环境必须关闭，避免启动时误改表结构。
         synchronize:
@@ -109,6 +112,7 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
     RecommendModule,
     BannerModule,
     StatisticsModule,
+    NoticeModule,
   ],
   controllers: [],
   providers: [],

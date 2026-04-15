@@ -9,4 +9,8 @@ export enum ConfigEnum {
   DB_SYNCHRONIZE = 'DB_SYNCHRONIZE', // 对应 .env 中的 DB_SYNCHRONIZE 键
 
   SECRET_TOKEN = 'SECRET_TOKEN', // 密钥
+
+  // 微信小程序配置
+  WECHAT_APPID = 'WECHAT_APPID', // 微信小程序 AppID
+  WECHAT_APPSECRET = 'WECHAT_APPSECRET', // 微信小程序 AppSecret
 }
