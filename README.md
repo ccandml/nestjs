@@ -41,3 +41,6 @@ npm run start:dev
 
 开发环境可依赖 synchronize: true 自动建表
 生产环境建议关闭 synchronize，并使用 migration 管理表结构
+
+💡 💡 💡
+或者直接执行nestdb.sql 直接创建表和全部（测试）数据
