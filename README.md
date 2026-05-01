@@ -1,6 +1,6 @@
 演示地址：
-c端：https://uniapp-frotend.pages.dev
-b端：https://back-frotend.pages.dev
+c端：https://chenyongxichen-custom.pages.dev/
+b端：https://chenyongxi-business.pages.dev/
 
 NestJS 后端数据库初始化使用说明
 
@@ -41,6 +41,3 @@ npm run start:dev
 
 开发环境可依赖 synchronize: true 自动建表
 生产环境建议关闭 synchronize，并使用 migration 管理表结构
-
-💡 💡 💡
-或者直接执行nestdb.sql 直接创建表和全部（测试）数据

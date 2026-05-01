@@ -14,13 +14,20 @@ type RateLimitBucket = {
 @Injectable()
 export class UserRateLimitGuard implements CanActivate {
   // 默认 60 秒内同一 IP 同一接口最多 60 次，可通过环境变量覆盖。
-  private readonly windowMs = Number(
-    process.env.RATE_LIMIT_WINDOW_MS ?? 60_000,
-  );
-  private readonly maxRequests = Number(process.env.RATE_LIMIT_MAX ?? 60);
+  private windowMs: number;
+  private maxRequests: number;
   private readonly buckets = new Map<string, RateLimitBucket>();
 
   canActivate(context: ExecutionContext): boolean {
+    /**
+     * 1. 类属性初始化太早，.env 还没加载，导致无法正确读取环境变量。
+     * 2. 将配置读取放在 canActivate 内部，能确保配置正确加载。
+     **/
+    if (!this.windowMs) {
+      // 仅第一次请求时 读取并赋值一次，后续请求直接使用已赋值的属性，避免每次请求都读取环境变量。
+      this.windowMs = Number(process.env.RATE_LIMIT_WINDOW_MS) || 60_000;
+      this.maxRequests = Number(process.env.RATE_LIMIT_MAX) || 60;
+    }
     const request = context.switchToHttp().getRequest();
     const ip =
       request.ip ??

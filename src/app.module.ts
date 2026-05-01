@@ -45,7 +45,7 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
     // 全局管家，拿到env的配置
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: ['.env', envFilePath], // 先读env， 后读envFilePath(后者覆盖前者)
+      envFilePath: ['.env', envFilePath], // 先读envFilePath， 后读env(后者覆盖前者)
       validationSchema: Joi.object({
         // 校验数据库配置的类型和必填性
         DB_HOST: Joi.string().default('localhost'),

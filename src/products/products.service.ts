@@ -288,44 +288,93 @@ export class ProductsService {
     }));
   }
 
-  // 后台SKU修改：前端字段映射为数据库字段后做局部更新
-  async updateAdminSku(dto: UpdateSkuDto) {
-    const { id, available, inventory, oldPrice, price } = dto;
-
-    const updatePayload: Partial<ProductSku> = {};
-
-    if (available !== undefined) {
-      updatePayload.status = available ? 1 : 0;
-    }
-    if (inventory !== undefined) {
-      updatePayload.stock = inventory;
-    }
-    if (oldPrice !== undefined) {
-      updatePayload.originalPrice = String(oldPrice);
-    }
-    if (price !== undefined) {
-      updatePayload.price = String(price);
+  // 后台SKU批量修改：前端字段映射为数据库字段后做局部更新
+  async updateAdminSku(dtoList: UpdateSkuDto[]) {
+    if (!Array.isArray(dtoList) || dtoList.length === 0) {
+      throw new BadRequestException('请传入SKU数组');
     }
 
-    if (!Object.keys(updatePayload).length) {
+    const updates = dtoList.map((dto) => this.buildAdminSkuUpdatePayload(dto));
+
+    const invalidUpdate = updates.find(
+      (item) => !item.id || !Object.keys(item.updatePayload).length,
+    );
+    if (invalidUpdate) {
       throw new BadRequestException(
-        '至少传一个可修改字段：available、inventory、oldPrice、price',
+        '每条SKU至少传一个可修改字段：available、inventory、oldPrice、price',
       );
     }
 
-    const sku = await this.skuRepository.findOne({ where: { id } });
-    if (!sku) {
-      throw new NotFoundException('SKU不存在');
-    }
+    const skuIds = updates.map((item) => item.id);
 
     await this.runWithDeadlockRetry(
-      () => this.skuRepository.update({ id }, updatePayload),
-      `updateAdminSku:${id}`,
+      () =>
+        this.productRepository.manager.transaction(async (manager) => {
+          const skuRepo = manager.getRepository(ProductSku);
+          const productRepo = manager.getRepository(Product);
+
+          const skus = await skuRepo.find({
+            where: { id: In(skuIds) },
+            select: ['id', 'productId'],
+          });
+
+          if (skus.length !== skuIds.length) {
+            const foundIds = new Set(skus.map((sku) => sku.id));
+            const missingIds = skuIds.filter((id) => !foundIds.has(id));
+            throw new NotFoundException(`SKU不存在: ${missingIds.join(',')}`);
+          }
+
+          const skuProductMap = new Map(
+            skus.map((sku) => [sku.id, sku.productId]),
+          );
+          const productIds = Array.from(
+            new Set(skus.map((sku) => sku.productId)),
+          ).sort();
+
+          if (productIds.length) {
+            await productRepo.find({
+              where: { id: In(productIds) },
+              order: { id: 'ASC' },
+              lock: { mode: 'pessimistic_write' },
+            });
+          }
+
+          const orderedUpdates = [...updates].sort((left, right) => {
+            const leftProductId = skuProductMap.get(left.id) || '';
+            const rightProductId = skuProductMap.get(right.id) || '';
+            if (leftProductId !== rightProductId) {
+              return leftProductId.localeCompare(rightProductId);
+            }
+            return String(left.id).localeCompare(String(right.id));
+          });
+
+          for (const item of orderedUpdates) {
+            await skuRepo.update({ id: item.id }, item.updatePayload);
+          }
+        }),
+      `updateAdminSku:batch:${skuIds.length}`,
     );
+
     return {
-      id,
       success: true,
+      count: skuIds.length,
+      ids: skuIds,
     };
+  }
+
+  private buildAdminSkuUpdatePayload(dto: UpdateSkuDto): {
+    id: string;
+    updatePayload: Partial<ProductSku>;
+  } {
+    const { id, available, inventory, oldPrice, price } = dto;
+    const updatePayload: Partial<ProductSku> = {};
+
+    if (available !== undefined) updatePayload.status = available ? 1 : 0;
+    if (inventory !== undefined) updatePayload.stock = inventory;
+    if (oldPrice !== undefined) updatePayload.originalPrice = String(oldPrice);
+    if (price !== undefined) updatePayload.price = String(price);
+
+    return { id, updatePayload };
   }
 
   // 获取多个商品数据

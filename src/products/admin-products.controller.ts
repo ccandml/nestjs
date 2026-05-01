@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Patch, Query, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Patch,
+  ParseArrayPipe,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { SearchProductsQueryDto } from './dto/products-query.dto';
 import { UpdateSkuDto } from './dto/update-sku.dto';
@@ -26,9 +34,12 @@ export class AdminProductsController {
     return this.productsService.getAdminProductDetailById(id);
   }
 
-  // 后台SKU修改：仅允许修改状态/库存/划线价/售价
+  // 后台SKU批量修改：仅允许修改状态/库存/划线价/售价
   @Patch('sku')
-  updateSku(@Body() dto: UpdateSkuDto) {
-    return this.productsService.updateAdminSku(dto);
+  updateSku(
+    @Body(new ParseArrayPipe({ items: UpdateSkuDto }))
+    dtoList: UpdateSkuDto[],
+  ) {
+    return this.productsService.updateAdminSku(dtoList);
   }
 }
